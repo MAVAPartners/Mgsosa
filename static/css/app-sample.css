@@ -272,3 +272,8 @@ hr {
 .site_link_color:hover{
     color:#fd9400 !important;
 }
+.site-container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
