@@ -1,0 +1,50 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>MGSOSA</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/app-sample.css' %}" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: Kingthings Petrock;
+    src: url('{% static 'fonts/kingthings-petrock/Kingthings Petrock.ttf' %}');
+  }
+</style>
+{% block style %}
+{% endblock %}
+</head>
+
+<body>
+ {% include 'includes/nav.html' %}
+
+  <!-- Page Content -->
+  <header class="header-area header--light">
+  <div class="header-big">
+    <!-- start .container -->
+    <div class="container-fluid" style="max-width:1500px">
+    <div class="row">
+    {% block banner %}
+    {% endblock %}
+    </div>
+    </div>
+    </div>
+    </header>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+  
+{% include 'includes/footer.html' %}
+{% block script %}
+{% endblock %}

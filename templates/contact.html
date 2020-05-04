@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    {% load static %}
+    <link href="{% static 'css/contact.css' %}" rel="stylesheet">
+<style>
+	body {
+	background: url('{% static 'images/parchemnt_paper2.png' %}') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	-o-background-size: cover;
+	font-family:Kingthings Petrock;
+	}
+</style>
+{% endblock %}
+
+{% block banner %}
+    {% load static %}
+    {% comment %} <img src="{% static 'images/new_red_banner.png' %}" class="img-fluid" height="400" alt="Responsive image"> {% endcomment %}
+{% endblock %}
+{% block content %}
+{% load static %}
+
+  <div class="container animated fadeIn">
+
+  <div class="row">
+    <h1 class="header-title mt-3"> Contact </h1>
+	{% include 'includes/breadcrumb.html' %}
+    <hr>
+    <div class="col-sm-12" id="parent">
+        <div class="col-sm-12" style="float:left;padding-left:5px">
+            <p style="text-align:center" class="content-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat. Pretium lectus quam id leo in vitae turpis. Suspendisse interdum consectetur libero id faucibus nisl tincidunt eget nullam. Viverra vitae congue eu consequat ac felis donec et. Dictum non consectetur a erat nam at lectus. Lectus magna fringilla urna porttitor rhoncus dolor purus non enim. Orci a scelerisque purus semper eget duis at tellus at. Feugiat in ante metus dictum at tempor. Sollicitudin nibh sit amet commodo nulla facilisi nullam vehicula. Molestie at elementum eu facilisis sed odio morbi quis. Ornare aenean euismod elementum nisi quis eleifend. Eget aliquet nibh praesent tristique magna sit amet purus gravida. Velit laoreet id donec ultrices.</p>
+        </div>
+    	<div class="col-sm-6" style="float:left">
+    	{% comment %} <iframe width="100%" height="320px;" frameborder="0" style="border:0" src="https://www.google.co.in/maps/place/St.+Gregorios+Orthodox+Church/@30.3750902,-97.5041864,17z/data=!3m1!4b1!4m5!3m4!1s0x8644c116123d0e63:0x69dab082e278bb31!8m2!3d30.3750902!4d-97.5019977?shorturl=1" allowfullscreen></iframe> {% endcomment %}
+    	{% comment %} <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3442.1502833079107!2d-97.50418638487709!3d30.375090181763248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644c116123d0e63%3A0x69dab082e278bb31!2sSt.%20Gregorios%20Orthodox%20Church!5e0!3m2!1sen!2sin!4v1587105350071!5m2!1sen!2sin" width="100%" height="320px;"  frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe> {% endcomment %}
+		</div>
+    	<div class="col-sm-12 content-p" >
+    		<form method="post" >
+    			{% csrf_token %}
+    			  {% for message in messages %}
+                    <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                      <p class="validation_alert">{{ message }} </p>
+                    </div>
+                  {% endfor %}
+
+    			{{ form.non_field_errors }}
+    			{% for hidden_field in form.hidden_fields %}
+				    {{ hidden_field.errors }}
+				    {{ hidden_field }}
+			  	{% endfor %}
+
+			  	{% if form.non_field_errors %}
+			    <ul>
+			      {% for error in form.non_field_errors %}
+			        <li>{{ error }}</li>
+			      {% endfor %}
+			    </ul>
+			 	 {% endif %}
+                <div class="form-group">
+                    <!-- <input type="text" class="form-control" id="name" name="nm" placeholder="Name" required="" autofocus=""> -->
+                    {% comment %} {{ form.name.label_tag }} {% endcomment %}
+                    {{ form.name }}
+                </div>
+                <div class="form-group form_left">
+                    <!-- <input type="email" class="form-control" id="email" name="em" placeholder="Email" required=""> -->
+                    {% comment %} {{ form.email.label_tag }} {% endcomment %}
+                    {{ form.email }}
+                </div>
+                <div class="form-group">
+                    <!-- <input type="text" class="form-control" id="phone" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10" placeholder="Mobile No." required=""> -->
+                    {% comment %} {{ form.mobile.label_tag }} {% endcomment %}
+                    {{ form.mobile }}
+                </div>
+                <div class="form-group">
+                    <!-- <textarea class="form-control textarea-contact" rows="5" id="comment" name="FB" placeholder="Type Your Message/Feedback here..." required=""></textarea> -->
+                    <!-- {{ form.message.label_tag }} -->
+                    {{ form.message }}
+                    <br>
+                    <button class="btn btn-default btn-send"> <span class="glyphicon glyphicon-send"></span> Send </button>
+                </div>
+     		</form>
+    	</div>
+    </div>
+  </div>
+
+  <div class="container second-portion">
+	<div class="row">
+        <!-- Boxes de Acoes -->
+    	<div class="col-xs-12 col-sm-6 col-lg-4">
+			<div class="box">
+				<div class="icon">
+					<div class="image"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+					<div class="info">
+						<h3 class="title">MAIL & WEBSITE</h3>
+						<p>
+							<i class="fa fa-envelope" aria-hidden="true"></i> &nbsp frzach@stthomastexas.org
+							<br>
+							<br>
+							<i class="fa fa-globe" aria-hidden="true"></i> &nbsp www.mgsosa.com
+						</p>
+					</div>
+				</div>
+				<div class="space"></div>
+			</div>
+		</div>
+
+        <div class="col-xs-12 col-sm-6 col-lg-4">
+			<div class="box">
+				<div class="icon">
+					<div class="image"><i class="fa fa-mobile" aria-hidden="true"></i></div>
+					<div class="info">
+						<h3 class="title">CONTACT</h3>
+    					<p>
+							<i class="fa fa-mobile" aria-hidden="true"></i> &nbsp (+91)-9624XXXXX
+							<br>
+							<br>
+							<i class="fa fa-mobile" aria-hidden="true"></i> &nbsp  (+91)-756706XXXX
+						</p>
+					</div>
+				</div>
+				<div class="space"></div>
+			</div>
+		</div>
+
+        <div class="col-xs-12 col-sm-6 col-lg-4">
+			<div class="box">
+				<div class="icon">
+					<div class="image"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+					<div class="info">
+						<h3 class="title">ADDRESS</h3>
+    					<p>
+							 <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp
+						</p>
+					</div>
+				</div>
+				<div class="space"></div>
+			</div>
+		</div>
+		<!-- /Boxes de Acoes -->
+		<!--My Portfolio  dont Copy this -->
+	</div>
+</div>
+</div>
+  <!--layout for 2 images ends-->
+
+{% endblock %}

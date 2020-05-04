@@ -1,0 +1,10 @@
+{% with url_name=request.resolver_match.url_name %}
+<div class="container ml-0 pl-0">
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb" style="float:left;background-color:transparent">
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ url_name|title }}</li>
+  </ol>
+</nav>
+</div>
+{% endwith %}

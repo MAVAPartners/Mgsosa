@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    {% load static %}
+    <link href="{% static 'css/contact.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css"/>
+    <style>
+    body {
+  {% comment %} background: url('{% static 'images/AdobeStock_306390621_Preview.jpeg' %}') no-repeat center center fixed; {% endcomment %}
+  background: url('{% static 'images/parchemnt_paper2.png' %}') no-repeat center center fixed;
+  {% comment %} background:url('https://source.unsplash.com/twukN12EN7c/1920x1080') no-repeat center center fixed; {% endcomment %}
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+    {% comment %} css for tiles starts here {% endcomment %}
+*{
+	padding:0;
+	margin:0;
+    -webkit-transition: 1s;
+    transition: 1s;
+}
+.clrd-font{
+	background: #FF512F;
+	background: -webkit-linear-gradient(to right, #F09819, #FF512F);
+	background: linear-gradient(to right, #F09819, #FF512F);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.btn-primary {
+	background-color:transparent;
+	color: #fff;
+	border: 2px solid #fff;
+	font-size:20px;
+	text-transform: uppercase;
+	border-radius: 0px;	
+}
+.btn-primary:hover {
+	background-color:transparent;
+	border-color: #d6962c;
+	color: #d6962c;
+	border-radius: 20px;
+}
+
+.single_portfolio_text{
+	display:inline-block;
+	padding:0;
+	position:relative;
+	overflow:hidden;
+}
+.single_portfolio_text img{
+	width:100%;
+}
+
+.single_portfolio_text:hover .portfolio_images_overlay{
+	top:5%;
+	left: 5%;
+}
+
+.portfolio_images_overlay{
+	width: 90%;
+	height: 90%;
+	background: rgba(0, 0, 0, 0.8);
+	padding: 20px;
+	margin: 0 auto;
+	top: -100%;
+	left: 5%;
+	position: absolute;
+	transition:.6s;
+	
+}
+.portfolio_images_overlay h6{
+	text-transform: uppercase;
+	color: #fff;
+	font-size: 30px;
+	font-weight: 900;
+	border: 2px solid #fff;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.portfolio_images_overlay .product_price{
+	font-size: 35px;
+	color: #fff;
+	font-weight:800;
+	line-height:30px;
+}
+.portfolio_images_overlay .product_price i{
+    margin-right: -10px;
+}
+.zoom{
+	width: 200px;
+    height: 200px;
+    position: absolute;
+    bottom: -100px;
+    right: -100px;
+    border-radius: 50%;
+
+	background: #FF512F;
+	background: -webkit-linear-gradient(to right, #F09819, #FF512F);
+	background: linear-gradient(to right, #F09819, #FF512F);
+    box-shadow:0px 0px 0px 10px rgba(0,0,0,0.5);
+	opacity:0.9;
+}
+.zoom:before {
+	content: "\f00e";
+    font-family: FontAwesome;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 70px;
+    padding-right: 20px;
+    position: absolute;
+    top: 10px;
+    left: 30px;
+}
+@media (min-width:769px) and (max-width:991px) {
+	.portfolio_images_overlay {
+		padding: 0px;
+	}
+}
+@media (max-width:768px) {
+	.portfolio_images_overlay{
+		padding: 170px 20px;
+	}
+}
+@media (max-width:580px) {
+	.portfolio_images_overlay{
+		padding: 100px 20px;
+	}
+}
+@media (max-width:480px) {
+	.portfolio_images_overlay{
+		padding: 40px 20px;
+	}
+}
+@media (max-width:320px) {
+	.portfolio_images_overlay{
+		padding: 20px;
+	}
+}
+
+{% comment %} css for tiles ends here {% endcomment %}
+</style>
+{% endblock %}
+
+{% block banner %}
+    {% load static %}
+	 <!-- section for banner-->
+     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="2500">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="{% static 'images/banner3_events.png' %}" style="max-height:400px" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{% static 'images/mgsosa_banner_event_banner.png' %}" style="max-height:400px"  alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{% static 'images/banner1.png' %}" style="max-height:400px" alt="Third slide">
+    </div> 
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+        <!-- section for banner ends here-->
+    {% comment %} <img src="{% static 'images/new_red_banner.png' %}" class="img-fluid" height="400" alt="Responsive image"> {% endcomment %}
+{% endblock %}
+{% block content %}
+{% load static %}
+
+<div class="container animated fadeIn">
+    <div class="row">
+        <h1 class="header-title mt-3"> All Events </h1>
+        {% include 'includes/breadcrumb.html' %}
+        <hr>
+        <div class="col-sm-12" id="parent">
+            <div class="col-sm-12" style="float:left;padding-left:5px">
+                <p style="text-align:center" class="content-p">Coming Soon</p>
+                {% comment %} <p style="text-align:left">Nisl condimentum id venenatis a. Cursus sit amet dictum sit amet justo. Maecenas ultricies mi eget mauris pharetra. Pharetra magna ac placerat vestibulum lectus mauris. Sollicitudin ac orci phasellus egestas tellus rutrum. Cras adipiscing enim eu turpis egestas pretium aenean pharetra. Nisi quis eleifend quam adipiscing vitae proin sagittis nisl. Sed vulputate mi sit amet. Tempor id eu nisl nunc mi ipsum. Eget nunc lobortis mattis aliquam. In eu mi bibendum neque egestas congue quisque. Ac turpis egestas integer eget aliquet nibh praesent tristique magna. Gravida quis blandit turpis cursus in hac. Id eu nisl nunc mi. Etiam dignissim diam quis enim lobortis scelerisque fermentum dui faucibus. Eget arcu dictum varius duis at consectetur lorem donec. Mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare. Pretium nibh ipsum consequat nisl vel pretium lectus. Gravida rutrum quisque non tellus orci ac auctor augue.</p>
+                <p style="text-align:left">Pretium viverra suspendisse potenti nullam. Mauris pharetra et ultrices neque ornare aenean euismod. Gravida arcu ac tortor dignissim convallis aenean et. Dignissim convallis aenean et tortor at. Adipiscing commodo elit at imperdiet. Augue eget arcu dictum varius. Leo vel fringilla est ullamcorper eget nulla facilisi etiam dignissim. Nunc pulvinar sapien et ligula ullamcorper malesuada. Placerat vestibulum lectus mauris ultrices eros in cursus. Risus commodo viverra maecenas accumsan lacus vel. Tristique et egestas quis ipsum suspendisse ultrices. Feugiat nibh sed pulvinar proin gravida hendrerit lectus a. Nec ultrices dui sapien eget mi proin sed libero enim.</p>
+                <p style="text-align:left">Consectetur adipiscing elit duis tristique sollicitudin nibh. Ultricies integer quis auctor elit sed. Consequat interdum varius sit amet mattis. Posuere ac ut consequat semper viverra nam libero justo. Nibh tellus molestie nunc non. Vulputate mi sit amet mauris commodo quis imperdiet massa. Lacinia at quis risus sed vulputate odio ut enim blandit. Blandit turpis cursus in hac habitasse platea dictumst. Pellentesque habitant morbi tristique senectus et. Eget felis eget nunc lobortis mattis aliquam faucibus purus in. Leo vel orci porta non pulvinar neque laoreet. Urna nunc id cursus metus aliquam. Est ante in nibh mauris. Venenatis cras sed felis eget. Malesuada fames ac turpis egestas maecenas. Mattis aliquam faucibus purus in massa tempor nec feugiat nisl. Tempor orci dapibus ultrices in iaculis nunc. Sapien pellentesque habitant morbi tristique senectus et netus et.</p> {% endcomment %}
+            </div>
+        </div>
+    </div>
+
+<!-- section for tiles ends here-->
+</div>
+  <!--layout for 2 images ends-->
+  
+{% endblock %}

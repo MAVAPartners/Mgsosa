@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    {% load static %}
+    <link href="{% static 'css/contact.css' %}" rel="stylesheet">
+<style>
+  body {
+    background: url('{% static 'images/parchemnt_paper2.png' %}') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    font-family:Kingthings Petrock !important;
+  }
+  #open{
+      display:none !important;
+  }
+</style>
+{% endblock %}
+
+{% block banner %}
+    {% load static %}
+    {% comment %} <img src="{% static 'images/new_red_banner.png' %}" class="img-fluid" height="400" alt="Responsive image"> {% endcomment %}
+{% endblock %}
+{% block content %}
+{% load static %}
+
+<div class="container animated fadeIn">
+    <div class="row">
+        <h1 class="header-title mt-3"> Daily Prayer </h1>
+        {% include 'includes/breadcrumb.html' %}
+        <hr>
+        <h2 class="black-color" style="width:100%">Powered by <span class="gold-color" >Qleedo</span></h2><br/>
+        <h3 style="width:100%">Download </h3>
+        <div class="col-sm-12 mb-5 mt-4 content-p" style="">
+                            <div class="col-sm-12 row" style="margin: auto 30%;width: 100%;"><a href="https://play.google.com/store/apps/details?id=com.mediaindia.qleedo&hl=en_IN" target="_blank" style="max-width:300px;float:left;">
+                                <img class="d-block w-100" src="{% static 'images/download-android.svg' %}" style="max-width:300px;" alt="First slide">
+                            </a></div>
+                            <div class="col-sm-12 row" style="margin: auto 30%;width: 100%;"><a href="https://apps.apple.com/in/developer/qleedo-foundation/id1266807075" target="_blank" style="max-width:300px;float:left;">
+                                <img class="d-block w-100" src="{% static 'images/download-apple.svg' %}" style="max-width:300px;margin-top:10px" alt="First slide">
+                            </a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12" id="prayer">
+        </div>
+    </div>
+</div>
+  <!--layout for 2 images ends-->
+{% endblock %}
+
+{% block script %}
+  <script>
+    'use strict';
+    var div = document.getElementById('prayer');
+    (async () => {
+    let url = '{{ prayerUrl }}';
+    fetch(url)
+      .then(function (response) {
+        switch (response.status) {
+        // status "OK"
+          case 200:
+            return response.text();
+          // status "Not Found"
+          case 404:
+            throw response;
+        }
+      })
+      .then(function (template) {
+        var updatedTemplate = template.replace('img_prayer_footnote.png', '/static/images/img_prayer_footnote.png');
+        var newstring = updatedTemplate.replace('prayer_end.png', '/static/images/prayer_end.png');
+        div.innerHTML += newstring
+        console.log(template);
+      })
+      .catch(function (response) {
+        // "Not Found"
+        console.log(response.statusText);
+      });
+    })()
+  </script>
+{% endblock %}
