@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^about/$', views.about, name='about'),
     url(r'^donations/$', views.donations, name='donations'),
     url(r'^events/$', views.events, name='events'),
+    url(r'^event-details/$', views.event_details, name='eventDetails'),
     url(r'^events-all/$', views.all_events, name='allEvents'),
     url(r'^contact/$', views.contact, name='contact'),
     url(r'^qleedo/$', views.qleedo, name='qleedo'),
