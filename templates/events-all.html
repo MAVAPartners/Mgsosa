@@ -139,6 +139,16 @@
 	}
 }
 
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #7f5604;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
 {% comment %} css for tiles ends here {% endcomment %}
 </style>
 {% endblock %}
@@ -183,14 +193,149 @@
         <h1 class="header-title mt-3"> All Events </h1>
         {% include 'includes/breadcrumb.html' %}
         <hr>
-        <div class="col-sm-12" id="parent">
+        {% comment %} <div class="col-sm-12" id="parent">
             <div class="col-sm-12" style="float:left;padding-left:5px">
-                <p style="text-align:center" class="content-p">Coming Soon</p>
-                {% comment %} <p style="text-align:left">Nisl condimentum id venenatis a. Cursus sit amet dictum sit amet justo. Maecenas ultricies mi eget mauris pharetra. Pharetra magna ac placerat vestibulum lectus mauris. Sollicitudin ac orci phasellus egestas tellus rutrum. Cras adipiscing enim eu turpis egestas pretium aenean pharetra. Nisi quis eleifend quam adipiscing vitae proin sagittis nisl. Sed vulputate mi sit amet. Tempor id eu nisl nunc mi ipsum. Eget nunc lobortis mattis aliquam. In eu mi bibendum neque egestas congue quisque. Ac turpis egestas integer eget aliquet nibh praesent tristique magna. Gravida quis blandit turpis cursus in hac. Id eu nisl nunc mi. Etiam dignissim diam quis enim lobortis scelerisque fermentum dui faucibus. Eget arcu dictum varius duis at consectetur lorem donec. Mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare. Pretium nibh ipsum consequat nisl vel pretium lectus. Gravida rutrum quisque non tellus orci ac auctor augue.</p>
-                <p style="text-align:left">Pretium viverra suspendisse potenti nullam. Mauris pharetra et ultrices neque ornare aenean euismod. Gravida arcu ac tortor dignissim convallis aenean et. Dignissim convallis aenean et tortor at. Adipiscing commodo elit at imperdiet. Augue eget arcu dictum varius. Leo vel fringilla est ullamcorper eget nulla facilisi etiam dignissim. Nunc pulvinar sapien et ligula ullamcorper malesuada. Placerat vestibulum lectus mauris ultrices eros in cursus. Risus commodo viverra maecenas accumsan lacus vel. Tristique et egestas quis ipsum suspendisse ultrices. Feugiat nibh sed pulvinar proin gravida hendrerit lectus a. Nec ultrices dui sapien eget mi proin sed libero enim.</p>
-                <p style="text-align:left">Consectetur adipiscing elit duis tristique sollicitudin nibh. Ultricies integer quis auctor elit sed. Consequat interdum varius sit amet mattis. Posuere ac ut consequat semper viverra nam libero justo. Nibh tellus molestie nunc non. Vulputate mi sit amet mauris commodo quis imperdiet massa. Lacinia at quis risus sed vulputate odio ut enim blandit. Blandit turpis cursus in hac habitasse platea dictumst. Pellentesque habitant morbi tristique senectus et. Eget felis eget nunc lobortis mattis aliquam faucibus purus in. Leo vel orci porta non pulvinar neque laoreet. Urna nunc id cursus metus aliquam. Est ante in nibh mauris. Venenatis cras sed felis eget. Malesuada fames ac turpis egestas maecenas. Mattis aliquam faucibus purus in massa tempor nec feugiat nisl. Tempor orci dapibus ultrices in iaculis nunc. Sapien pellentesque habitant morbi tristique senectus et netus et.</p> {% endcomment %}
+                <p style="text-align:center" class="content-p"><h1 class="header-title mt-3">Coming Soon</h1></p>
             </div>
-        </div>
+        </div> {% endcomment %}
+        {% comment %} code for all events {% endcomment %}
+        <div class="row row-cols-1 row-cols-md-2">
+  <div class="col mb-4  mr-3">
+    <!-- Card -->
+    <div class="card">
+
+      <!--Card image-->
+      <div class="view overlay">
+        <img class="card-img-top" src="{% static 'images/cons_tile.png' %}"
+          alt="Card image cap">
+        <a href="#!">
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+
+      <!--Card content-->
+      <div class="card-body">
+
+        <!--Title-->
+        <h4 class="card-title">Card title</h4>
+        <!--Text-->
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+          card's content.</p>
+        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+        <button type="button" class="btn btn-light-blue btn-md">Read more</button>
+
+      </div>
+
+    </div>
+    <!-- Card -->
+  </div>
+  <div class="col mb-4">
+    <!-- Card -->
+    <div class="card">
+
+      <!--Card image-->
+      <div class="view overlay">
+        <img class="card-img-top" src="{% static 'images/Game_tile.png' %}"
+          alt="Card image cap">
+        <a href="#!">
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+
+      <!--Card content-->
+      <div class="card-body">
+
+        <!--Title-->
+        <h4 class="card-title">Card title</h4>
+        <!--Text-->
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+          card's content.</p>
+        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+        <button type="button" class="btn btn-light-blue btn-md">Read more</button>
+
+      </div>
+
+    </div>
+    <!-- Card -->
+  </div>
+  
+</div>
+<div class="row row-cols-1 row-cols-md-2">
+<div class="col mb-4 mr-3">
+    <!-- Card -->
+    <div class="card">
+
+      <!--Card image-->
+      <div class="view overlay">
+        <img class="card-img-top" src="{% static 'images/Tshirt_tiles.png' %}"
+          alt="Card image cap">
+        <a href="#!">
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+
+      <!--Card content-->
+      <div class="card-body">
+
+        <!--Title-->
+        <h4 class="card-title">Card title</h4>
+        <!--Text-->
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+          card's content.</p>
+        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+        <button type="button" class="btn btn-light-blue btn-md">Read more</button>
+
+      </div>
+
+    </div>
+    <!-- Card -->
+  </div>
+  <div class="col mb-4">
+    <!-- Card -->
+    <div class="card">
+
+      <!--Card image-->
+      <div class="view overlay">
+        <img class="card-img-top" src="{% static 'images/restaurant_Tile.png' %}"
+          alt="Card image cap">
+        <a href="#!">
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+
+      <!--Card content-->
+      <div class="card-body">
+
+        <!--Title-->
+        <h4 class="card-title">Card title</h4>
+        <!--Text-->
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+          card's content.</p>
+        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+        <button type="button" class="btn btn-light-blue btn-md">Read more</button>
+
+      </div>
+
+    </div>
+    <!-- Card -->
+  </div>
+</div>
+{% comment %} pagination code {% endcomment %}
+<nav aria-label="Page navigation example" class="col-sm-12 d-flex justify-content-center">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+{% comment %} pagination code neds here {% endcomment %}
+        {% comment %} code for ell events ends {% endcomment %}
     </div>
 
 <!-- section for tiles ends here-->
