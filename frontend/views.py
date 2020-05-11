@@ -159,3 +159,7 @@ def home_sample_two(request):
     else:
         prayer = 'May God Bless You'
     return render(request, 'home-sample-two.html', {'prayer': prayer})
+
+
+def event_details(request):
+    return render(request, 'event-details.html')

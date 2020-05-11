@@ -31,21 +31,26 @@
         {% include 'includes/breadcrumb.html' %}
         <hr>
         <h2 class="black-color" style="width:100%">Powered by <span class="gold-color" >Qleedo</span></h2><br/>
-        <h3 style="width:100%">Download </h3>
-        <div class="col-sm-12 mb-5 mt-4 content-p" style="">
-                            <div class="col-sm-12 row" style="margin: auto 30%;width: 100%;"><a href="https://play.google.com/store/apps/details?id=com.mediaindia.qleedo&hl=en_IN" target="_blank" style="max-width:300px;float:left;">
-                                <img class="d-block w-100" src="{% static 'images/download-android.svg' %}" style="max-width:300px;" alt="First slide">
-                            </a></div>
-                            <div class="col-sm-12 row" style="margin: auto 30%;width: 100%;"><a href="https://apps.apple.com/in/developer/qleedo-foundation/id1266807075" target="_blank" style="max-width:300px;float:left;">
-                                <img class="d-block w-100" src="{% static 'images/download-apple.svg' %}" style="max-width:300px;margin-top:10px" alt="First slide">
-                            </a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="col-sm-12 content-p" id="prayer">
         </div>
+
+        <h2 class="black-color" style="width:100%">Download <span class="gold-color" >Qleedo</span></h2><br/>
+        <div class="content-p">
+              {% comment %} <h3 class="col-sm-3 mb-5 mt-4 " style="margin: 0px;float: left;">Download </h3> {% endcomment %}
+              <div class="col-sm-12" style="margin: 12px;">
+                            <div class="col-sm-5" style="float:left;margin-right: 2px;margin-top: 4px;">
+                              <a href="https://play.google.com/store/apps/details?id=com.mediaindia.qleedo&hl=en_IN" target="_blank" style="float:left;">
+                                <img class="d-block w-100" src="{% static 'images/download-android.svg' %}" style="" alt="First slide">
+                              </a>
+                            </div>
+                            <div class="col-sm-5" style="float:left;margin-left: 10px;">
+                              <a href="https://apps.apple.com/in/developer/qleedo-foundation/id1266807075" target="_blank" style="float:left;margin-top: 11px;">
+                                <img class="d-block w-100" src="{% static 'images/download-apple.svg' %}" style="" alt="First slide">
+                              </a>
+                            </div>
+                </div>
+            </div>
     </div>
 </div>
   <!--layout for 2 images ends-->
