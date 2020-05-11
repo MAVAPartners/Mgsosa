@@ -157,8 +157,7 @@ a {
     background-size: cover;
     background-position: center center;
     color: #FFFFFF;
-    padding: 90px 90px
-    ;
+    padding: 90px 15px;
 }
 
 .col {
@@ -277,3 +276,24 @@ hr {
     flex-direction: column;
     min-height: 100vh;
   }
+
+  .footer-text {
+    text-align: center;
+    line-height: normal;
+    margin-bottom: 3rem;
+}
+.social-icons .fa {
+    padding: 5px;
+    color: #333;
+    font-size: 1.7rem!important;
+}
+.contact-info a {
+    color: #666;
+    text-decoration: none;
+    text-align: center;
+}
+.footer-copyright p {
+    text-align: center;
+    font-size: .8rem;
+    line-height: normal;
+}

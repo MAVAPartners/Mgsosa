@@ -148,6 +148,8 @@ outline-offset: none;
       url("{% static 'images/coat-of-arms-11.png' %}");
   background-color: transparent;
 }
+
+
 </style>
 
 	
@@ -251,10 +253,14 @@ outline-offset: none;
           <li>jQuery 3.4.1</li>
         </ul> {% endcomment %}
         <div class="row mt-5 ">
-	    <div class="col-xs-12 col-md-6 prayer-container">
+	     <div class="col-xs-12 col-md-6 prayer-container">
 	        <div class="bg bg-left">
-	        	<h2 class="black-color">Prayer of the Hour</h2><br/>
-            <h4 class="red-color">{{ prayer }}<h4><br/>
+	        	<h2 class="black-color mb-3">Prayer of the Hour</h2>
+            <h4 class="red-color mb-3">{{ prayer }}<h4>
+            
+             <div class="col-sm-12 lead" id="prayer" style="color:#898a96">
+        </div><br/>
+        <div style="width:100%;float:right"><a href="{% url 'dailyPrayer' %}" style="float: right;font-size: 14px;color: #b37c13;">Read More</a></div>
             <h5 class="black-color">Powered by <a href="{% url 'qleedo' %}">Qleedo</a></h5>
 	        </div>
 	    </div>
@@ -393,11 +399,45 @@ outline-offset: none;
   </div>
 {% include 'includes/footer.html' %}
   <!-- Bootstrap core JavaScript -->
-    <script src="{% static 'js/jquery.slim.min.js' %}"></script>
+    {% comment %} <script src="{% static 'js/jquery.slim.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}" ></script>
+    <script src="{% static 'js/bootstrap.min.js' %}" ></script> {% endcomment %}
+
+<script>
+    'use strict';
+
+    function removeTags(str) {
+      if ((str===null) || (str===''))
+      return false;
+      else
+      str = str.toString();
+      return str.replace( /(<([^>]+)>)/ig, '');
+   }
 
 
-</body>
-
-</html>
+    var div = document.getElementById('prayer');
+    (async () => {
+    let url = '{{ prayerurl }}';
+    fetch(url)
+      .then(function (response) {
+        switch (response.status) {
+        // status "OK"
+          case 200:
+            return response.text();
+          // status "Not Found"
+          case 404:
+            throw response;
+        }
+      })
+      .then(function (template) {
+        var updatedTemplate = template.replace('img_prayer_footnote.png', '/static/images/img_prayer_footnote.png');
+        var newstring = updatedTemplate.replace('prayer_end.png', '/static/images/prayer_end.png');
+        div.innerHTML += removeTags(newstring).substring(0,253);
+        console.log(template);
+      })
+      .catch(function (response) {
+        // "Not Found"
+        console.log(response.statusText);
+      });
+    })()
+  </script>
