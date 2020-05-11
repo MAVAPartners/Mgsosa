@@ -32,11 +32,14 @@ def home(request):
         if json_data["status"] == 200:
             results = json_data["result"]
             prayer = results[0]['Name']
+            prayerurl = results[0]['Prayer']['url']
         else:
             prayer = 'May God Bless You'
+            prayerurl = '#'
     else:
         prayer = 'May God Bless You'
-    return render(request, 'home-sample.html', {'prayer': prayer})
+        prayerurl = '#'
+    return render(request, 'home-sample.html', {'prayer': prayer, 'prayerurl': prayerurl})
 
 def about(request):
     return render(request, 'about.html')
@@ -133,11 +136,14 @@ def home_sample(request):
         if json_data["status"] == 200:
             results = json_data["result"]
             prayer = results[0]['Name']
+            prayerurl = results[0]['Prayer']['url']
         else:
             prayer = 'May God Bless You'
+            prayerurl = '#'
     else:
         prayer = 'May God Bless You'
-    return render(request, 'home-sample.html', {'prayer': prayer})
+        prayerurl = '#'
+    return render(request, 'home-sample.html', {'prayer': prayer, 'prayerurl': prayerurl})
 
 def home_sample_two(request):
     now = datetime.now()
@@ -154,11 +160,14 @@ def home_sample_two(request):
         if json_data["status"] == 200:
             results = json_data["result"]
             prayer = results[0]['Name']
+            prayerurl = results[0]['Prayer']['url']
         else:
             prayer = 'May God Bless You'
+            prayerurl = '#'
     else:
         prayer = 'May God Bless You'
-    return render(request, 'home-sample-two.html', {'prayer': prayer})
+        prayerurl = '#'
+    return render(request, 'home-sample-two.html', {'prayer': prayer, 'prayerurl': prayerurl})
 
 
 def event_details(request):
