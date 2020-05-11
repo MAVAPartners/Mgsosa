@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
 {% block style %}
-    {% load static %}
-    <link href="{% static 'css/contact.css' %}" rel="stylesheet">
+{% load static %}
+<link href="{% static 'css/contact.css' %}" rel="stylesheet">
 <style>
     body {
-    background: url('{% static 'images/parchemnt_paper2.png' %}') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
+        background: url('{% static 'images/parchemnt_paper2.png' %}') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
     }
 
     @font-face {
@@ -20,8 +20,9 @@
 {% endblock %}
 
 {% block banner %}
-    {% load static %}
-    {% comment %} <img src="{% static 'images/new_red_banner.png' %}" class="img-fluid" height="400" alt="Responsive image"> {% endcomment %}
+{% load static %}
+{% comment %} <img src="{% static 'images/new_red_banner.png' %}" class="img-fluid" height="400" alt="Responsive image">
+{% endcomment %}
 {% endblock %}
 {% block content %}
 {% load static %}
@@ -33,11 +34,23 @@
         <hr>
         <div class="col-sm-12" id="parent">
             <div class="col-sm-12" style="float:left;padding-left:5px">
-                <p style="text-align:center;font-family: Kingthings Petrock;" class="content-p"><h1 class="header-title mt-3" style="text-align:left;font-family: Kingthings Petrock;">Coming Soon..</h1></p>
+                <p style="text-align:center;font-family: Kingthings Petrock;" class="content-p">
+                <h1 class="header-title mt-3" style="text-align:left;font-family: Kingthings Petrock;">Access restricted
+                    for registred users. For more details please contact admin. <a
+                        href="mailto:wmgsosaadmin@gmail.com">Admin Email</a>
+                </h1>
+                </p>
+            </div>
+            <div class="col-sm-12" style="float:left;padding-left:5px">
+                <a style="text-align:left;font-family: Kingthings Petrock;" class="content-p">
+                    <h1 class="header-title mt-3" style="text-align:left;font-family: Kingthings Petrock;"><a
+                            href="{% url 'forum:index' %}">MGSOSA Forum</a>
+                    </h1>
+                </a>
             </div>
         </div>
     </div>
-    
+
 </div>
-  <!--layout for 2 images ends-->
+<!--layout for 2 images ends-->
 {% endblock %}
