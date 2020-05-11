@@ -115,7 +115,7 @@ header .overlay {
     background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
   }
   header video {
-    display: none;
+    {% comment %} display: none; {% endcomment %}
   }
 }
 {% comment %} code for video bacground ends here{% endcomment %}
@@ -225,6 +225,12 @@ outline-offset: none;
 .gold-leaf{
     background: url('{% static 'images/gold-leaf.png' %}') no-repeat center center fixed;
 }
+.catsandstars {
+  background-image:
+      url("{% static 'images/coat-of-arms-11.png' %}"), 
+      url("{% static 'images/coat-of-arms-11.png' %}");
+  background-color: transparent;
+}
 </style>
 
 	
@@ -288,6 +294,7 @@ outline-offset: none;
   </div>
   
 </header>
+ <div class="catsandstars" style="min-height:25px">&nbsp;</div>
 {% comment %} <header> {% endcomment %}
 {% with url_name=request.resolver_match.url_name %}
 <!-- Navigation -->

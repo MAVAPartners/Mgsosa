@@ -117,7 +117,7 @@ header .overlay {
     background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
   }
   header video {
-    display: none;
+    {% comment %} display: none; {% endcomment %}
   }
 }
 {% comment %} code for video bacground ends here{% endcomment %}
@@ -139,6 +139,14 @@ color: #fff;
 background-color: #0a97b9;
 border-top:2px solid #087994;
 outline-offset: none;
+}
+
+{% comment %} background image {% endcomment %}
+.catsandstars {
+  background-image:
+      url("{% static 'images/coat-of-arms-11.png' %}"), 
+      url("{% static 'images/coat-of-arms-11.png' %}");
+  background-color: transparent;
 }
 </style>
 
@@ -201,7 +209,9 @@ outline-offset: none;
       </div>
     </div>
   </div>
+ 
 </header>
+ <div class="catsandstars" style="min-height:25px">&nbsp;</div>
   <!-- section for banner-->
         {% comment %} <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="2500">
   <ol class="carousel-indicators">
