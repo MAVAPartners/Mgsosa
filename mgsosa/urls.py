@@ -13,11 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
 from django.conf.urls import url
+from django.contrib import admin
+from django.urls import include, path
+from machina import urls as machina_urls
+
 from frontend import views
 from worker import views as worker_view
+
+# Change admin site title
+admin.site.site_header = "MGSOSA Administration"
+admin.site.site_title = "MGSOSA Admin"
 
 urlpatterns = [
     url(r'^$', views.home_sample, name='home'),
@@ -33,5 +39,6 @@ urlpatterns = [
     url(r'^sample/$', views.home_sample, name='sample'),
     url(r'^sample2/$', views.home_sample_two, name='sample2'),
     url(r'^monitor/$', worker_view.check_server_status, name='monitor'),
-    path('admin/', admin.site.urls),
+    url(r"^admin/", admin.site.urls, name="admin"),
+    path(r"^forum/", include(machina_urls), name="forum"),
 ]
