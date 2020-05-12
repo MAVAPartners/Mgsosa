@@ -280,7 +280,7 @@ hr {
   .footer-text {
     text-align: center;
     line-height: normal;
-    margin-bottom: 3rem;
+    /* margin-bottom: 3rem; */
 }
 .social-icons .fa {
     padding: 5px;

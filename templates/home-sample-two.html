@@ -148,7 +148,17 @@ outline-offset: none;
       url("{% static 'images/coat-of-arms-11.png' %}");
   background-color: transparent;
 }
+.read_more_prayer{
+  float: right;
+  font-size: 14px;
+  color: #b37c13;
+}
 
+.read_more_prayer:hover{
+  float: right;
+  font-size: 14px;
+  color: #66470c;
+}
 
 </style>
 
@@ -260,7 +270,7 @@ outline-offset: none;
             
              <div class="col-sm-12 lead" id="prayer" style="color:#898a96">
         </div><br/>
-        <div style="width:100%;float:right"><a href="{% url 'dailyPrayer' %}" style="float: right;font-size: 14px;color: #b37c13;">Read More</a></div>
+        <div style="width:100%;float:right"><a href="{% url 'dailyPrayer' %}" class="read_more_prayer" style="">Read More</a></div>
             <h5 class="black-color">Powered by <a href="{% url 'qleedo' %}">Qleedo</a></h5>
 	        </div>
 	    </div>
