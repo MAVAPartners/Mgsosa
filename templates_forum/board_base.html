@@ -33,8 +33,12 @@
       <a class="nav-item nav-link" style="color:white"
         href="{% url 'forum_search:search' %}">{% trans "Advanced search" %}</a>
     </div>
-
-    <a style="color:white" href="{% url 'home' %}">MGSOSA Site</a>
+    {% if user.is_superuser %}
+    <div style=" margin-right: 30px;">
+      <a style="color:white;" href="{% url 'admin:index' %}">MGSOSA Administrator</a>
+    </div>
+    {% endif %}
+    <a style="color:white; " href="{% url 'home' %}">MGSOSA Site</a>
     {% endblock header_collapse %}
   </div>
 </nav>
