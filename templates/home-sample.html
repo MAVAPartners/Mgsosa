@@ -227,8 +227,8 @@ outline-offset: none;
 }
 .catsandstars {
   background-image:
-      url("{% static 'images/coat-of-arms-11.png' %}"), 
-      url("{% static 'images/coat-of-arms-11.png' %}");
+      url("{% static 'images/coat-of-arms-112.png' %}"), 
+      url("{% static 'images/coat-of-arms-112.png' %}");
   background-color: transparent;
 }
 
@@ -252,39 +252,11 @@ outline-offset: none;
 
   <!-- Navigation -->
   {% with url_name=request.resolver_match.url_name %}
- <nav class="navbar navbar-expand-lg navbar-dark static-top" style="z-index:100">
+ {% comment %} <nav class="navbar navbar-expand-lg navbar-dark static-top" style="z-index:100">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img class="d-block ml-5" style="position:absolute;width:100px" src="{% static 'images/footer-logo.png' %}" alt="First slide">
-   </a>
-      {% comment %}<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item {% if url_name == 'home' %} active {% endif %}">
-            <a class="nav-link" href="{% url 'home' %}">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {% if url_name == 'about' %} active {% endif %}" href="{% url 'about' %}">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {% if url_name == 'events' %} active {% endif %}" href="{% url 'events' %}">Events</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {% if url_name == 'community' %} active {% endif %}" href="{% url 'community' %}">Community</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {% if url_name == 'dailyPrayer' %} active {% endif %}" href="{% url 'dailyPrayer' %}">Daily Prayer</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {% if url_name == 'contact' %} active {% endif %}" href="{% url 'contact' %}">Contact</a>
-          </li>
-        </ul>
-      </div>  {% endcomment %}
+      <a class="navbar-brand" href="#"><img class="d-block ml-5" style="position:absolute;width:100px" src="{% static 'images/footer-logo.png' %}" alt="First slide"></a>
     </div>
-  </nav> 
+  </nav>  {% endcomment %}
   {% endwith %}
   <!-- Page Content -->
   <div class="container-fluid" style="margin-top:-57px">
@@ -306,7 +278,7 @@ outline-offset: none;
   </div>
   
 </header>
- <div class="catsandstars" style="min-height:25px">&nbsp;</div>
+ <div class="catsandstars" style="min-height:27px">&nbsp;</div>
 {% comment %} <header> {% endcomment %}
 {% with url_name=request.resolver_match.url_name %}
 <!-- Navigation -->
