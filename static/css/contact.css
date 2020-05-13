@@ -37,20 +37,23 @@
         resize:none;
     }
 
-    .btn-send
-    {
+    .btn-send {
         border-radius: 0px;
-        border:1px solid #d2a560;
-        background:#fff;
-        color:#d2a560;
+        border: 1px solid #098aa9;
+        background: #0bacd3;
+        color: #fff;
+        width:30% !important;
+        padding:10px;
     }
 
     .btn-send:hover
     {
-        border:1px solid #ac731c;
-        background:#d2a560;
-        color:#fff;
+        border:1px solid #098aa9;
+        background:#0bacd3;
+        color:#000;
         transition:background 0.5s;
+        width:30% !important;
+        padding:10px;
     }
 
     .second-portion
@@ -98,4 +101,6 @@
       color: rgb(250, 76, 76);
       font: italic;
     }
+
+
 /* Conatct end */

@@ -47,7 +47,7 @@ h4 {
  color:#363940
 }
 a {
- color:#5867dd
+ color:#0bacd3
 }
 .no-padding {
  padding:0!important
@@ -189,9 +189,9 @@ a {
 
 /* css for prayer section */
 .prayer-container {
-    border-color: red;
+    border-color: #7f5604;
     /* background-color: #f8d289; */
-    border: 1px solid red;
+    border: 1px solid #7f5604;
     height:420px;
 }
 .black-color {
@@ -296,4 +296,10 @@ hr {
     text-align: center;
     font-size: .8rem;
     line-height: normal;
+}
+
+.btn-events-primary {
+    color: #fff;
+    background-color: #0bacd3;
+    border-color: #0bacd3;
 }
