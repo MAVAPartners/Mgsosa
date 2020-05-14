@@ -15,7 +15,7 @@
 .single-item-area .img-box-area .overlay .box .content a i {
     border: 2px solid #fff;
     text-align: center;
-    color: #509E52;
+    color: #0bacd3;
     display: inline-block;
     font-size: 15px;
     height: 55px;
@@ -96,7 +96,7 @@
     position: absolute;
     content: '';
     height: 5px;
-    border-bottom: 3px double #509E52;
+    border-bottom: 3px double #0bacd3;
     width: 100px;
     border-radius: 0px;
     left: 0;

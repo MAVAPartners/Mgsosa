@@ -232,10 +232,10 @@
       border-radius: 0px;
   }
   .owl-theme .owl-controls .owl-nav [class*="owl-"]:hover {
-      background: none repeat scroll 0 0 #509E52;
+      background: none repeat scroll 0 0 #0bacd3;
       color: white;
       text-decoration: none;
-      border: 1px solid #509E52;
+      border: 1px solid #098aa9;
       transition: all 500ms ease;
   }
   .owl-theme .owl-controls .owl-nav .disabled {
