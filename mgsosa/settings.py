@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '+cdmd0fk($yd$e(c&ic(o7!e65fe^6lqza)co4x51$k^#+m72!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -117,19 +117,21 @@ DATABASES = {
     }
 }
 '''
-'''
+
+# Google Cloud Mysql server connection details
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mavapartnersin$mgsosa',
-        'USER': 'mavapartnersin',
-        'PASSWORD': 'Mgsosa@123',
-        'HOST' : 'mavapartnersin.mysql.pythonanywhere-services.com,
+        'NAME': 'mgsosa',
+        'USER': 'mgsosa',
+        'PASSWORD': 'Mava@12345',
+        'HOST' : 'localhost',
         'PORT' : '3306'
     }
 }
-'''
 
+# Local Postgre sql server connection details
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -140,7 +142,7 @@ DATABASES = {
         'PORT' : '5432'
     }
 }
-
+'''
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 

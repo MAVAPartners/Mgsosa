@@ -1,7 +1,7 @@
-Django==3.0.5
-django-haystack==2.8.1
-django-machina==1.1
-django-mptt==0.11.0
-django-widget-tweaks==1.4.8
-psycopg2==2.8.5
-requests==2.22.0
+Django
+django-haystack
+django-machina
+django-mptt
+django-widget-tweaks
+requests
+mysqlclient
