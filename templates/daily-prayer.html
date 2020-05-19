@@ -84,5 +84,8 @@
         console.log(response.statusText);
       });
     })()
+    var onClicker = function(id) {
+      $(id).slideToggle("slow", "swing");
+    }
   </script>
 {% endblock %}
