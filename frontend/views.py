@@ -1,12 +1,12 @@
-from django.shortcuts import render
-import requests
-from datetime import datetime
 import json
-from django.core.mail import BadHeaderError, send_mail
+from datetime import datetime
+
+import requests
 from django.contrib import messages
+from django.core.mail import BadHeaderError, send_mail
+from django.shortcuts import render
 
 from .forms import ContactForm
-
 
 # Create your views here.
 

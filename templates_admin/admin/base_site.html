@@ -39,8 +39,10 @@
 </style>
 {% endblock %}
 {% block branding %}
+{% if user.is_superuser %}
 <h1 id="site-name" "><a style=" color:white" href="{% url 'admin:index' %}">
     {{ site_header|default:_('MGSOSA Administration') }}</a></h1>
+{% endif %}
 {% endblock %}
 
 {% block nav-global %}{% endblock %}

@@ -22,7 +22,7 @@ from frontend import views
 from worker import views as worker_view
 
 # Change admin site title
-admin.site.site_header = "MGSOSA Administration"
+admin.site.site_header = "Administration"
 admin.site.site_title = "MGSOSA Admin"
 
 urlpatterns = [
@@ -40,5 +40,5 @@ urlpatterns = [
     url(r'^sample2/$', views.home_sample_two, name='sample2'),
     url(r'^monitor/$', worker_view.check_server_status, name='monitor'),
     url(r"^admin/", admin.site.urls, name="admin"),
-    path(r"^forum/", include(machina_urls), name="forum"),
+    path(r"forum/", include(machina_urls), name="forum"),
 ]

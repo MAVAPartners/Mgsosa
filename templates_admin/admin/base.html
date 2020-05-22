@@ -33,29 +33,37 @@
         <!-- Header -->
         <div id="header" style="color:white">
             <div id="branding">
-                {% block branding %}{% endblock %}
+                {% block branding %}
+                {% endblock %}
             </div>
             {% block usertools %}
+
             {% if has_permission %}
-            <div id="user-tools">
+            <div id="user-tools" style="font-size: 16px; text-transform: capitalize;">
                 {% block welcome-msg %}
                 {% trans 'Welcome,' %}
                 <strong>{% firstof user.get_short_name user.get_username %}</strong>.
                 {% endblock %}
                 {% block userlinks %}
                 {% if site_url %}
-                <a href="{{ site_url }}">MGSOSA Site</a> /
+                <a href="{{ site_url }}">MGSOSA</a> /
                 {% endif %}
                 {% if user.is_active and user.is_staff %}
+                <a style=" text-transform: capitalize; font-size: 15px;"
+                    href="{% url 'forum:index' %}">{% trans 'Forum' %}</a> /
                 {% url 'django-admindocs-docroot' as docsroot %}
                 {% if docsroot %}
-                <a href="{{ docsroot }}">{% trans 'Documentation' %}</a> /
+                <a style=" text-transform: capitalize; font-size: 15px;"
+                    href="{{ docsroot }}">{% trans 'Documentation' %}</a> /
                 {% endif %}
                 {% endif %}
                 {% if user.has_usable_password %}
-                <a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a> /
+                <a style=" text-transform: capitalize; font-size: 15px;" href="{% url 'admin:password_change' %}">Change
+                    password</a>
+                /
                 {% endif %}
-                <a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a>
+                <a style=" text-transform: capitalize; font-size: 15px;"
+                    href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a>
                 {% endblock %}
             </div>
             {% endif %}

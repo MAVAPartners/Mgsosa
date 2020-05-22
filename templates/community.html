@@ -35,16 +35,18 @@
         <div class="col-sm-12" id="parent">
             <div class="col-sm-12" style="float:left;padding-left:5px">
                 <p style="text-align:center;font-family: Kingthings Petrock;" class="content-p">
-                <h5 class="header-title mt-3" style="text-align:left;font-family: Kingthings Petrock;">Access to MGSOSA
-                    Forum is restricted to registered users. For more information please contact administrator. <a
-                        href="mailto:mava.partnersin@gmail.com">Admin Email</a>
+                <h5 class="header-title mt-3" style="text-align:left;font-family: Kingthings Petrock;">Welcome to our
+                    community.  This is a place we can meet and discuss things like events, meets up, study groups, or
+                    even charitable cause for the organization.  Join us and become part of the online community today.
+                    <a href="mailto:mava.partnersin@gmail.com">Admin Email</a>
                 </h5>
                 </p>
             </div>
             <div class="col-sm-12" style="float:left;padding-left:5px">
                 <a style="text-align:left;font-family: Kingthings Petrock;" class="">
                     <h2 class="header-title mt-3" style="text-align:left;font-family: Kingthings Petrock;"><a
-                            href="{% url 'forum:index' %}">MGSOSA Forum</a>
+                            href="{% if request.user.is_authenticated %} {% url 'forum:index' %} {% else %} {% url 'admin:index' %}{% endif %}">MGSOSA
+                            Forum</a>
                     </h2>
                 </a>
             </div>
