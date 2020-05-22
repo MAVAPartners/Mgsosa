@@ -34,11 +34,11 @@
         href="{% url 'forum_search:search' %}">{% trans "Advanced search" %}</a>
     </div>
     {% if user.is_superuser %}
-    <div style=" margin-right: 30px;">
-      <a style="color:white;font-size: small;" href="{% url 'admin:index' %}">Administrator</a>
+    <div>
+      <a style="color:white;" class="btn btn-link" href="{% url 'admin:index' %}">Administrator</a>
     </div>
     {% endif %}
-    <a style="color:white;" href="{% url 'home' %}">Mgsosa</a>
+    <a style="color:white;" class="btn btn-link" href="{% url 'home' %}">Mgsosa</a>
     {% if user.has_usable_password %}
     <a style="color:white;" class="btn btn-link" href="{% url 'admin:password_change' %}">Change Password</a>
     {% endif %}
