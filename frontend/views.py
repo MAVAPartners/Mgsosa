@@ -3,10 +3,15 @@ from datetime import datetime
 
 import requests
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import AuthenticationForm
 from django.core.mail import BadHeaderError, send_mail
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect, render, render_to_response
+from django.template import RequestContext
 
-from .forms import ContactForm
+from .forms import ContactForm, LoginForm, RegistrationForm
 
 # Create your views here.
 
@@ -172,3 +177,61 @@ def home_sample_two(request):
 
 def event_details(request):
     return render(request, 'event-details.html')
+
+def registration_view(request):
+    context = {}
+    if request.POST:
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            email = form.cleaned_data.get('email')
+            password1 = form.cleaned_data.get('password1')
+            password2 = form.cleaned_data.get('password2')
+            first_name = form.cleaned_data.get('first_name')
+            last_name = form.cleaned_data.get('last_name')
+            #account = authenticate(email=email, password=password1)
+            #login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            form = RegistrationForm()
+            context['registration_form'] = form
+            messages.success(request, 'User Signup successfully Please contact Administrator for approval')
+        else:
+            context['registration_form'] = form
+    else:
+        form = RegistrationForm()
+        context['registration_form'] = form
+    return render(request, 'signup.html', context)
+
+
+def login_user(request):
+    context = {}
+    if request.POST:
+        form = AuthenticationForm(request, data=request.POST)
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
+        #user = auth_login(username, password)
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            if user.is_active:
+                userData = login(request, user)
+                if userData is not None:
+                    messages.success(request, 'You are now successfully loged in')
+                    return HttpResponseRedirect('/forum/')
+                else:
+                    messages.error(request, 'Please request Admin to approve this user authentication')
+                    context['login_form'] = form
+            else:
+                messages.error(request, 'Invalid username / password')
+                context['login_form'] = form
+        else:
+            messages.error(request, 'Invalid username / password')
+            context['login_form'] = form
+    else:
+        form = AuthenticationForm()
+        context['login_form'] = form
+    return render(request, 'login.html', context)
+
+def logout_request(request):
+    logout(request)
+    messages.success(request, 'You are now successfully logged out')
+    return HttpResponseRedirect('/signin/')

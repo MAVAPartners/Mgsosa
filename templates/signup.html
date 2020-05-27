@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block style %}
+{% load static %}
+<link href="{% static 'css/contact.css' %}" rel="stylesheet">
+<style>
+    body {
+        background: url('{% static 'images/parchemnt_paper2.png' %}') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+
+    @font-face {
+        font-family: myFirstFont;
+        src: url('{% static 'fonts/kingthings-petrock/Kingthings Petrock.ttf' %}');
+    }
+</style>
+{% endblock %}
+
+{% block banner %}
+{% load static %}
+{% comment %} <img src="{% static 'images/new_red_banner.png' %}" class="img-fluid" height="400" alt="Responsive image">
+{% endcomment %}
+{% endblock %}
+{% block content %}
+{% load static %}
+<div class="container animated fadeIn">
+    <div class="row">
+        <h1 class="header-title mt-3"> User Signup </h1>
+        {% include 'includes/breadcrumb.html' %}
+        <hr>
+        <div class="col-sm-12" id="parent">
+            <div class="col-sm-12 content-p">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <form method="post">{% csrf_token %}
+                    {% for field in registration_form  %}
+                    <div class="form-group">
+                        {% comment %} {{ field.mobile.label_tag }} {% endcomment %}
+                        {{field}}
+
+                        {% if field.help_text %}
+                        <small style="color: grey;">{{field.help_text}}</small>
+                        {% endif %}
+
+                        {% for error in field.errors %}
+                        <p style="color: red;">{{error}}</p>
+                        {% endfor %}
+                    </div>
+
+                    {% endfor %}
+                    <button style="margin-top: 25px;" type="submit">Signup</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

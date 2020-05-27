@@ -40,5 +40,8 @@ urlpatterns = [
     url(r'^sample2/$', views.home_sample_two, name='sample2'),
     url(r'^monitor/$', worker_view.check_server_status, name='monitor'),
     url(r"^admin/", admin.site.urls, name="admin"),
-    path(r"forum/", include(machina_urls), name="forum"),
+    path(r"forum/", include(machina_urls), name = "forum"),
+    url(r'^signup/$', views.registration_view, name = 'signup'),
+    url(r'^signin/$', views.login_user, name = 'signin'),
+    url(r'^sginout/$', views.logout_request, name = 'signout'),
 ]
