@@ -52,8 +52,3 @@ class Meta:
 class LoginForm(AuthenticationForm):
 	username = forms.CharField(help_text='Required. A User Name', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'User Name'}))
 	password = forms.CharField(help_text='Required. Password', widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}))
-
-
-	class Meta:
-		model = User
-		fields = ("username", "password")

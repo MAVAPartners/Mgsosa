@@ -31,7 +31,7 @@
         <h1 class="header-title mt-3"> User Login </h1>
         {% include 'includes/breadcrumb.html' %}
         <hr>
-        <div class="col-sm-12" id="parent">
+        <div class="col-sm-12" id="parent" style="justify-content: center;">
             <div class="col-sm-12 content-p">
                 {% if messages %}
                 <ul class="messages">
@@ -40,10 +40,13 @@
                     {% endfor %}
                 </ul>
                 {% endif %}
-                <form method="post" style="margin-top: 20px;">{% csrf_token %}
+                <form method="post" style="margin-top: 20px;
+                border: 4px solid #bfab87;
+                padding: 50px;
+                margin: 20px;  justify-content: center;margin:0 auto;" class="col-sm-8">{% csrf_token %}
                     {% for field in login_form  %}
                     <div class="form-group">
-                        {% comment %} {{ field.label_tag }} {% endcomment %}
+                        {% comment %} {{ field.mobile.label_tag }} {% endcomment %}
                         {{field}}
 
                         {% if field.help_text %}

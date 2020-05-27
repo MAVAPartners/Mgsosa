@@ -40,7 +40,10 @@
                     {% endfor %}
                 </ul>
                 {% endif %}
-                <form method="post">{% csrf_token %}
+                <form method="post" style="margin-top: 20px;
+                border: 4px solid #bfab87;
+                padding: 50px;
+                margin: 20px;  justify-content: center;margin:0 auto;" class="col-sm-8">{% csrf_token %}
                     {% for field in registration_form  %}
                     <div class="form-group">
                         {% comment %} {{ field.mobile.label_tag }} {% endcomment %}
