@@ -19,7 +19,7 @@ EMAIL_SUBJECT = 'From MGSOSA website'
 # TO_EMAIL = 'mava.partnersin@gmail.com,anoob.vm@mavapartners.com'
 
 TO_EMAIL = 'mava.partnersin@gmail.com'
-# TO_EMAIL = 'anoob.vm@mavapartners.com'
+#TO_EMAIL = 'anoob.vm@mavapartners.com'
 
 
 def home(request):
@@ -91,7 +91,8 @@ def contact(request):
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             #return contact(request)
-            return home(request)
+            messages.success(request, 'Thank you for your message. We will contact you in couple of days. ')
+            return HttpResponseRedirect('/contact/')
             # return  render(request, 'contact.html',{'form': form})
         else:
             print('form is NOT valid')
