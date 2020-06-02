@@ -16,6 +16,21 @@
         font-family: myFirstFont;
         src: url('{% static 'fonts/kingthings-petrock/Kingthings Petrock.ttf' %}');
     }
+
+    .btn-sky {
+        color: #fff;
+        background-color: #0bacd3;
+        border-bottom: 2px solid #098aa9;
+    }
+
+    .button-alignment {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .margin-button {
+        margin-left: 15px;
+    }
 </style>
 {% endblock %}
 
@@ -40,20 +55,22 @@
                     even charitable cause for the organization.  Join us and become part of the online community today.
                     <a href="mailto:mava.partnersin@gmail.com">Admin Email</a>
                     <br>
-                    <a href="{% url 'signup' %}">Create user</a>
-                    <br>
-                    <a href="{% url 'signin' %}">Login</a>
+                    <div class="button-alignment">
+                        {% if request.user.is_authenticated %}
+                        <a class="margin-button"
+                            href="{% if request.user.is_authenticated %} {% url 'forum:index' %} {% else %} {% url 'admin:index' %}{% endif %}"><button
+                                type="button" class="btn btn-sky text-uppercase btn-lg">MGSOSA Forum</button></a>
+                        {% else %}
+                        <a class="margin-button" href="{% url 'signin' %}"><button type="button"
+                                class="btn btn-sky text-uppercase btn-lg">Join
+                                Now</button></a>
+                        <a class="margin-button" href="{% url 'signin' %}"><button type="button"
+                                class="btn btn-sky text-uppercase btn-lg">Login</button></a>
+                        {% endif %}
+                    </div>
                 </h5>
 
                 </p>
-            </div>
-            <div class="col-sm-12" style="float:left;padding-left:5px">
-                <a style="text-align:left;font-family: Kingthings Petrock;" class="">
-                    <h2 class="header-title mt-3" style="text-align:left;font-family: Kingthings Petrock;"><a
-                            href="{% if request.user.is_authenticated %} {% url 'forum:index' %} {% else %} {% url 'admin:index' %}{% endif %}">MGSOSA
-                            Forum</a>
-                    </h2>
-                </a>
             </div>
         </div>
     </div>
