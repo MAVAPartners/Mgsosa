@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.core.mail import BadHeaderError, send_mail
 from django.http import HttpResponseRedirect
-from django.shortcuts import redirect, render, render_to_response
+from django.shortcuts import redirect, render
 from django.template import RequestContext
 
 from .forms import ContactForm, LoginForm, RegistrationForm
