@@ -60,11 +60,11 @@ INSTALLED_APPS = [
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp.mailgun.org'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'mava.monitor@gmail.com'
-EMAIL_HOST_PASSWORD = 'Mavabc@1234'
+EMAIL_HOST_USER = 'postmaster@sandbox3dd88df53aa34d2fa50d43080094fca2.mailgun.org'
+EMAIL_HOST_PASSWORD = '720ad596c19fd86ee0afee6046648b5e-a2b91229-1fcbe324'
 EMAIL_USE_SSL = False
 
 MIDDLEWARE = [
