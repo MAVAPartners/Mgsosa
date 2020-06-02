@@ -157,7 +157,7 @@ a {
     background-size: cover;
     background-position: center center;
     color: #FFFFFF;
-    padding: 90px 15px;
+    padding: 70px 15px;
 }
 
 .col {
@@ -192,7 +192,9 @@ a {
     border-color: #7f5604;
     /* background-color: #f8d289; */
     border: 1px solid #7f5604;
-    height:401px;
+    /* height:401px; */
+    margin-bottom: 15px;
+    max-height:551px;
 }
 .black-color {
     color: #000;
