@@ -17,7 +17,14 @@ Phone: <a href="tel:344755111">344-755-111</a>&nbsp;•&nbsp;<a href="{% url 'co
 <div>&nbsp;</div>
 <div class="footer-copyright container">
 <p>© 2020&nbsp;Mor GreGorios Syriac Orthodox Student Association.<br>
-<a href="{% url 'community' %}">Community</a> | <a href="{% url 'about' %}">About</a> | <a href="{% url 'dailyPrayer' %}">Daily Prayers</a><br>
+<a href="{% url 'home' %}" style="font-size:16px;line-height:30px;" >Home</a>
+									| <a href="{% url 'about' %}" style="font-size:16px;line-height:30px;">About</a>
+									| <a href="{% url 'events' %}" style="font-size:16px;line-height:30px;">Events</a>
+									| <a href="{% url 'community' %}" style="font-size:16px;line-height:30px;">Community</a>
+									| <a href="{% url 'dailyPrayer' %}" style="font-size:16px;line-height:30px;">Daily Prayer</a>
+									| <a href="{% url 'contact' %}" style="font-size:16px;line-height:30px;">Contact Us</a>
+								<br>
+{% comment %} <a href="{% url 'community' %}">Community</a> | <a href="{% url 'about' %}">About</a> | <a href="{% url 'dailyPrayer' %}">Daily Prayers</a><br> {% endcomment %}
 Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 <p><em>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</em></p>
 </div>
@@ -144,9 +151,9 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                     <font style="vertical-align: inherit;">© 2020 All Rights Reserved. </font>
                   </font>
                   
-                    <font style="vertical-align: inherit;">
+                    {% comment %} <font style="vertical-align: inherit;">
                       <font style="vertical-align: inherit;">Powered by <a href="http://mavapartners.com/" target="_blank" class="site_link_color"> &nbsp;MAVA Partners</a></font>
-                    </font>
+                    </font> {% endcomment %}
                   
                 </p>
               </div>
