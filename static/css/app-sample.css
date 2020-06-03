@@ -228,7 +228,8 @@ a {
     float: left;
 }
 .tg-copyrights {
-    float: right;
+    /* float: right; */
+    text-align: center;
 }
 .col-xs-12 {
     width: 100%;
@@ -268,10 +269,10 @@ hr {
 }
 
 .site_link_color{
-    color:#fd9400 !important;
+    color:#0bacd3 !important;
 }
 .site_link_color:hover{
-    color:#fd9400 !important;
+    color:#0989a7 !important;
 }
 .site-container{
     display: flex;
