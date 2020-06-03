@@ -44,7 +44,7 @@
                 border: 4px solid #bfab87;
                 padding: 50px;
                 margin: 20px;  justify-content: center;margin:0 auto;" class="col-sm-8">{% csrf_token %}
-                
+
                     {% for field in login_form  %}
                     <div class="form-group">
                         {% comment %} {{ field.mobile.label_tag }} {% endcomment %}
@@ -60,7 +60,7 @@
 
                     </div>
                     {% endfor %}
-                    <button style="margin-top: 25px;" type="submit">Signin</button>
+                    <button style="margin-top: 25px;" type="submit">Login</button>
                 </form>
             </div>
         </div>
@@ -71,12 +71,12 @@
 
 {% block script %}
 <script>
-$(document).ready(function(){
-    $('#id_username').attr('class','form-control');
-    $('#id_username').attr('placeholder','Username');
-    $('#id_password').attr('class','form-control');
-    $('#id_password').attr('placeholder','password');
-    $('button[type="submit"]').attr("class", "btn-default btn-send");
-});
+    $(document).ready(function () {
+        $('#id_username').attr('class', 'form-control');
+        $('#id_username').attr('placeholder', 'Username');
+        $('#id_password').attr('class', 'form-control');
+        $('#id_password').attr('placeholder', 'password');
+        $('button[type="submit"]').attr("class", "btn-default btn-send");
+    });
 </script>
 {% endblock %}

@@ -233,6 +233,7 @@ def login_user(request):
                     messages.success(request, 'You are now successfully loged in')
                     return HttpResponseRedirect('/forum/')
                 else:
+                    logout(request)
                     messages.error(request, 'Please request Admin to approve this user authentication')
                     context['login_form'] = form
             else:
