@@ -50,7 +50,11 @@
         <div class="col-sm-12" id="parent">
             <div class="col-sm-12" style="float:left;padding-left:5px">
                 <p style="text-align:center;font-family: Kingthings Petrock;" class="content-p">
-                <h5 class="header-title mt-3 content-p" style="font-family: Kingthings Petrock;line-height:35px;">Welcome to the MGSOSA Community! Meet with others to discuss events, meets up, study groups, or even charitable causes around the Archdiocese. Spread awareness of local events with the others around the Archdiocese. Engage in discussions with fellow peers. Whatever you would like to share, you can do so with the MGSOSA forum feature. Join us and become part of the online community today. 
+                <h5 class="header-title mt-3 content-p" style="font-family: Kingthings Petrock;line-height:35px;">
+                    Welcome to the MGSOSA Community! Meet with others to discuss events, meets up, study groups, or even
+                    charitable causes around the Archdiocese. Spread awareness of local events with the others around
+                    the Archdiocese. Engage in discussions with fellow peers. Whatever you would like to share, you can
+                    do so with the MGSOSA forum feature. Join us and become part of the online community today.
                     {% comment %} <a href="mailto:mava.partnersin@gmail.com">Admin Email</a> {% endcomment %}
                     <br>
                     <div class="button-alignment">
@@ -59,7 +63,7 @@
                             href="{% if request.user.is_authenticated %} {% url 'forum:index' %} {% else %} {% url 'admin:index' %}{% endif %}"><button
                                 type="button" class="btn btn-sky text-uppercase btn-lg">MGSOSA Forum</button></a>
                         {% else %}
-                        <a class="margin-button" href="{% url 'signin' %}"><button type="button"
+                        <a class="margin-button" href="{% url 'signup' %}"><button type="button"
                                 class="btn btn-sky text-uppercase btn-lg">Join
                                 Now</button></a>
                         <a class="margin-button" href="{% url 'signin' %}"><button type="button"

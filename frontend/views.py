@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.models import User
 from django.core.mail import BadHeaderError, send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
@@ -183,13 +184,20 @@ def registration_view(request):
     context = {}
     if request.POST:
         form = RegistrationForm(request.POST)
+        print('....registration_view.......');
         if form.is_valid():
             user = form.save()
+            username = form.cleaned_data.get('username')
             email = form.cleaned_data.get('email')
-            password1 = form.cleaned_data.get('password1')
+            password = form.cleaned_data.get('password1')
             password2 = form.cleaned_data.get('password2')
             first_name = form.cleaned_data.get('first_name')
             last_name = form.cleaned_data.get('last_name')
+            user.is_active = True
+            user.email = email
+            user.first_name = first_name
+            user.last_name = last_name
+            user.save()
             #account = authenticate(email=email, password=password1)
             #login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             form = RegistrationForm()
@@ -207,8 +215,14 @@ def login_user(request):
     context = {}
     if request.POST:
         form = AuthenticationForm(request, data=request.POST)
-        username = form.cleaned_data['username']
-        password = form.cleaned_data['password']
+        #print('.....form AuthenticationForm.... '+request.POST['username'])
+        #username = form.cleaned_data['username']
+        #password = form.cleaned_data['password']
+        username = request.POST['username']
+        password = request.POST['password']
+        print(password+'..r...form AuthenticationForm....55... '+username)
+
+
         #user = auth_login(username, password)
         user = authenticate(request, username=username, password=password)
 
