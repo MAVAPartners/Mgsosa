@@ -258,11 +258,7 @@ outline-offset: none;
 
   <!-- Navigation -->
   {% with url_name=request.resolver_match.url_name %}
- {% comment %} <nav class="navbar navbar-expand-lg navbar-dark static-top" style="z-index:100">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img class="d-block ml-5" style="position:absolute;width:100px" src="{% static 'images/footer-logo.png' %}" alt="First slide"></a>
-    </div>
-  </nav>  {% endcomment %}
+ 
   {% endwith %}
   <!-- Page Content -->
   <div class="container-fluid" style="margin-top:-57px">
@@ -328,20 +324,9 @@ outline-offset: none;
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
-        {% comment %} <h1 class="mt-5">A Bootstrap 4 Starter Template</h1>
-        <p class="lead">Complete with pre-defined file paths and responsive navigation!</p>
-        <ul class="list-unstyled">
-          <li>Bootstrap 4.3.1</li>
-          <li>jQuery 3.4.1</li>
-        </ul> {% endcomment %}
+        
         <div class="row mt-5 ">
-	    {% comment %} <div class="col-xs-12 col-md-6 prayer-container">
-	        <div class="bg bg-left">
-	        	<h2 class="black-color">Prayer of the Hour</h2><br/>
-            <a href="{% url 'dailyPrayer' %}"><h4 class="red-color">{{ prayer }}<h4></a><br/>
-            <h5 class="black-color">Powered by <a href="{% url 'qleedo' %}">Qleedo</a></h5>
-	        </div>
-	    </div> {% endcomment %}
+	    
       <div class="col-xs-12 col-md-6 prayer-container">
 	        <div class="bg bg-left">
 	        	<h2 class="black-color mb-3">Prayer of the Hour</h2>
@@ -357,18 +342,14 @@ outline-offset: none;
 	        </div>
 	    </div>
 	    <div class="col-xs-12 col-md-6" style="padding-left: 5px;">
-            {% comment %} <div class="bg bg-right">
-	        	<h2> &nbsp;</h2>
-	        </div> {% endcomment %}
+           
             <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="gold-color">Mor Gregorios</h1>
     <p class="lead" style="font-family: Kingthings Petrock;">St. Gregorios Geevarghese, popularly known as "Parumala Thirumeni", was a great monk who through continuous prayers, made it clear to the world that Prayer and devotion is mightier than any worldly possession. The Holy Father's short life was remarkable in many respects and after a saintly life of prayer, he become the brightest jewel of the Universal Syrian Church. In 1922, under the student initiative of the Malankara Metropolitan, Mor Athanasius Paulose, known as “Valiya Thirumeni”, the organization came to be named after his spiritual guru, St. Gregorios Geevarghese of Parumala. We formally recognize ourselves to this day as the Mar Gregorios Syriac Orthodox Student Association.  </p>
     <div class="wrap">
 <img src="{% static 'images/st_gregorios_geevarghese.png' %}" style="height:220px;" alt="Mgsosa">
-  {% comment %} <button class="button">Donate</button> {% endcomment %}
-{% comment %} <a href="{% url 'donations' %}"><button type="button" class="btn btn-sky text-uppercase btn-lg">Donate</button></a> {% endcomment %}
-</div>
+  </div>
   </div>
 </div>
 	    </div>
@@ -451,29 +432,7 @@ outline-offset: none;
       <hr>
 
       <!-- Pagination -->
-      {% comment %} <ul class="pagination justify-content-center">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-            <span class="sr-only">Previous</span>
-          </a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">1</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">2</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">3</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-            <span class="sr-only">Next</span>
-          </a>
-        </li>
-      </ul> {% endcomment %}
+      
 
     </div>
     <!-- /.container for events -->
@@ -491,11 +450,6 @@ outline-offset: none;
     </div>
   </div>
 {% include 'includes/footer.html' %}
-  {% comment %} <!-- Bootstrap core JavaScript -->
-    <script src="{% static 'js/jquery.slim.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}" ></script> {% endcomment %}
-
 
 <script>
     'use strict';
