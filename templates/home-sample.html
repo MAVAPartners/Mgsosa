@@ -243,6 +243,12 @@ outline-offset: none;
   font-size: 14px;
   color: #66470c;
 }
+
+.jumbotron {
+    padding: 1rem 1rem;
+    margin-bottom: 2rem;
+    border-radius: .3rem;
+}
 </style>
 
 	
@@ -520,7 +526,7 @@ outline-offset: none;
       .then(function (template) {
         var updatedTemplate = template.replace('img_prayer_footnote.png', '/static/images/img_prayer_footnote.png');
         var newstring = updatedTemplate.replace('prayer_end.png', '/static/images/prayer_end.png');
-        div.innerHTML += removeTags(newstring).substring(0,605);
+        div.innerHTML += removeTags(newstring).substring(0,955);
         console.log(template);
       })
       .catch(function (response) {

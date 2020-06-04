@@ -194,7 +194,8 @@ a {
     border: 1px solid #7f5604;
     /* height:401px; */
     margin-bottom: 15px;
-    max-height:551px;
+    max-height:656px;
+    border-radius:5px;
 }
 .black-color {
     color: #000;
