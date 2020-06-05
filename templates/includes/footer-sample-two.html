@@ -8,7 +8,8 @@
           <div class="footer-widget">
             <div class="widget-about">
               <img src="{% static 'images/fav.png' %}" alt="" class="img-fluid">
-              <p>Help our new converts! Can't do the full two weeks? No problem - Just <a href="{% url 'contact' %}">contact us</a></p>
+              <p>Help our new converts! Can't do the full two weeks? No problem - Just <a
+                  href="mailto:contactus@mgsosa.com">contact us</a></p>
               <ul class="contact-details">
                 <li>
                   <span class="icon-earphones"></span> Contact Us:
@@ -62,7 +63,7 @@
                 <li>
                   <a href="#">Serving</a>
                 </li>
-               <li>
+                <li>
                   <a href="{% url 'about' %}">About Us</a>
                 </li>
               </ul>
@@ -78,8 +79,8 @@
             <div class="footer-menu no-padding">
               <h4 class="footer-widget-title">Contact</h4>
               <ul>
-                 <li>
-                  <a href="{% url 'contact' %}">Contact Us</a>
+                <li>
+                  <a href="mailto:contactus@mgsosa.com">Contact Us</a>
                 </li>
               </ul>
             </div>
@@ -96,29 +97,51 @@
   </div>
   <!-- end /.footer-big -->
 
-<div class="tg-footerbar">
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-12">
-							<nav class="tg-footernav">
-								<ul>
-									<li><a href="{% url 'home' %}" style="color:#fff"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Home</font></font></a></li>
-									<li><a href="{% url 'about' %}" style="color:#fff"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">About Us</font></font></a></li>
-									<li><a href="{% url 'events' %}" style="color:#fff"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Events</font></font></a></li>
-									<li><a href="{% url 'contact' %}" style="color:#fff"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Contact Us</font></font></a></li>
-								</ul>
-							</nav>
-							<div class="tg-copyrights"><p style="margin-bottom:0px;color:#fff"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© 2020 All rights reserved </font></font></p></div>
-						</div>
-					</div>
-				</div>
-			</div>
+  <div class="tg-footerbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <nav class="tg-footernav">
+            <ul>
+              <li><a href="{% url 'home' %}" style="color:#fff">
+                  <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Home</font>
+                  </font>
+                </a></li>
+              <li><a href="{% url 'about' %}" style="color:#fff">
+                  <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">About Us</font>
+                  </font>
+                </a></li>
+              <li><a href="{% url 'events' %}" style="color:#fff">
+                  <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Events</font>
+                  </font>
+                </a></li>
+              <li><a href="mailto:contactus@mgsosa.com" style="color:#fff">
+                  <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Contact Us</font>
+                  </font>
+                </a></li>
+            </ul>
+          </nav>
+          <div class="tg-copyrights">
+            <p style="margin-bottom:0px;color:#fff">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">© 2020 All rights reserved </font>
+              </font>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>
 
-  <!-- Bootstrap core JavaScript -->
-    <script src="{% static 'js/jquery.slim.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}" ></script>
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'js/jquery.slim.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
 </body>
 
 </html>
