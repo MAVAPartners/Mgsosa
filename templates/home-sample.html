@@ -14,478 +14,572 @@
   <!-- Bootstrap core CSS -->
   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'css/app-sample.css' %}" rel="stylesheet">
-<style>
-@font-face {
-    font-family: Kingthings Petrock;
-    src: url('{% static 'fonts/kingthings-petrock/Kingthings Petrock.ttf' %}');
-  }
-body {
-  background: url('{% static 'images/parchemnt_paper2.png' %}') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
-  font-family:Kingthings Petrock;
-}
+  <style>
+    @font-face {
+      font-family: Kingthings Petrock;
+      src: url('{% static 'fonts/kingthings-petrock/Kingthings Petrock.ttf' %}');
+    }
 
-.navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show>.nav-link{
-    color : #24c3f4;
-    font-family:Kingthings Petrock;
-}
-.navbar-dark .navbar-nav .nav-link{
-    color:#fff
-}
-{% comment %} button css {% endcomment %}
-.wrap {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    body {
+      background: url('{% static 'images/parchemnt_paper2.png' %}') no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      background-size: cover;
+      -o-background-size: cover;
+      font-family: Kingthings Petrock;
+    }
 
-.button {
-  width: 140px;
-  height: 45px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  font-weight: 500;
-  color: #000;
-  background-color: #fff;
-  border: none;
-  border-radius: 45px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
-  outline: none;
-  }
+    .navbar-dark .navbar-nav .active>.nav-link,
+    .navbar-dark .navbar-nav .nav-link.active,
+    .navbar-dark .navbar-nav .nav-link.show,
+    .navbar-dark .navbar-nav .show>.nav-link {
+      color: #24c3f4;
+      font-family: Kingthings Petrock;
+    }
 
-.button:hover {
-  background-color: #2EE59D;
-  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-  color: #fff;
-  transform: translateY(-7px);
-}
-{% comment %} button css ends here{% endcomment %}
+    .navbar-dark .navbar-nav .nav-link {
+      color: #fff
+    }
 
-{% comment %} code for video bacground {% endcomment %}
-header {
-  position: relative;
-  background-color: black;
-  height: 75vh;
-  min-height: 25rem;
-  width: 100%;
-  overflow: hidden;
-}
+      {
+      % comment %
+    }
 
-header video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: 0;
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-}
+    button css {
+      % endcomment %
+    }
 
-header .container {
-  position: relative;
-  z-index: 2;
-}
+    .wrap {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-header .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: black;
-  opacity: 0.4;
-  z-index: 1;
-}
+    .button {
+      width: 140px;
+      height: 45px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      font-weight: 500;
+      color: #000;
+      background-color: #fff;
+      border: none;
+      border-radius: 45px;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease 0s;
+      cursor: pointer;
+      outline: none;
+    }
 
-@media (pointer: coarse) and (hover: none) {
-  header {
-    background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
-  }
-  header video {
-    {% comment %} display: none; {% endcomment %}
-  }
-}
-{% comment %} code for video bacground ends here{% endcomment %}
-.btn-sky {
-color: #fff;
-background-color: #0bacd3;
-border-bottom:2px solid #098aa9;
-}
+    .button:hover {
+      background-color: #2EE59D;
+      box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+      color: #fff;
+      transform: translateY(-7px);
+    }
 
-.btn-sky:hover,.btn-sky.active:focus, .btn-sky:focus, .open>.dropdown-toggle.btn-sky {
-color: #fff;
-background-color: #29b6d8;
-border-bottom:2px solid #2192ad;
-outline: none;
-}
+      {
+      % comment %
+    }
 
-.btn-sky:active, .btn-sky.active {
-color: #fff;
-background-color: #0a97b9;
-border-top:2px solid #087994;
-outline-offset: none;
-}
+    button css ends here {
+      % endcomment %
+    }
 
-{% comment %} css for bottom menu {% endcomment %}
- .navbar-menu a {
-  color: #000 !important;
-  cursor: pointer;
-  display: block;
-  padding: 1rem 1.5rem;
-  text-decoration: none;
-  transition: background-color .16s ease-in;
-}
+      {
+      % comment %
+    }
 
-.navbar-menu a:hover {
-  background-color: #7f5604;
-  color:#fff !important;
-}
-.navbar-menu .menu {
-  display: block;
-  text-align: center;
-}
+    code for video bacground {
+      % endcomment %
+    }
 
-.navbar-menu .menu li {
-  display: inline-block;
-}
+    header {
+      position: relative;
+      background-color: black;
+      height: 75vh;
+      min-height: 25rem;
+      width: 100%;
+      overflow: hidden;
+    }
 
-.navbar-menu .menu li:hover > .submenu {
-  display: block;
-  -webkit-animation-name: showSubMenu;
-  -webkit-animation-duration: .4s;
-}
+    header video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: 0;
+      -ms-transform: translateX(-50%) translateY(-50%);
+      -moz-transform: translateX(-50%) translateY(-50%);
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
+    }
 
-.navbar-menu .menu li ul {
-  background-color: #f08080;
-  display: none;
-  position: absolute;
-}
+    header .container {
+      position: relative;
+      z-index: 2;
+    }
 
-.navbar-menu .menu li ul li {
-  display: block;
-}
+    header .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: black;
+      opacity: 0.4;
+      z-index: 1;
+    }
 
-.navbar-menu .menu li ul li a:active {
-  -webkit-animation-name: hideSubMenu;
-  -webkit-animation-duration: .4s;
-}
-.navbar {
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    padding: 0px; 
-}
-.nav-item{
-  margin:0 auto;
-}
-.active a{
-  color: #B27D12 !important;
-}
-.nav-link {
-    color: #000 !important;
-    cursor: pointer;
-    display: block;
-    padding: 1rem 1.5rem !important;
-    text-decoration: none;
-    transition: background-color .16s ease-in;
-    font-size: 17px;
-    {% comment %} padding:17px 28px !important; {% endcomment %}
-}
-.navbar-nav li {
-    display: inline-block;
-    line-height: 1.5;
-}
-.navbar-dark .navbar-toggler-icon {
-    filter: brightness(0.1) sepia(2) hue-rotate(15deg) saturate(200);
-    float: right;
-}
-.navbar-toggler{
-  margin:auto 0 auto auto
-}
+    @media (pointer: coarse) and (hover: none) {
+      header {
+        background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
+      }
 
-.gold-leaf{
-    background: url('{% static 'images/gold-leaf.png' %}') no-repeat center center fixed;
-}
-.catsandstars {
-  background-image:
-      url("{% static 'images/coat-of-arms-112.png' %}"), 
+      header video {
+          {
+          % comment %
+        }
+
+        display: none;
+
+          {
+          % endcomment %
+        }
+      }
+    }
+
+      {
+      % comment %
+    }
+
+    code for video bacground ends here {
+      % endcomment %
+    }
+
+    .btn-sky {
+      color: #fff;
+      background-color: #0bacd3;
+      border-bottom: 2px solid #098aa9;
+    }
+
+    .btn-sky:hover,
+    .btn-sky.active:focus,
+    .btn-sky:focus,
+    .open>.dropdown-toggle.btn-sky {
+      color: #fff;
+      background-color: #29b6d8;
+      border-bottom: 2px solid #2192ad;
+      outline: none;
+    }
+
+    .btn-sky:active,
+    .btn-sky.active {
+      color: #fff;
+      background-color: #0a97b9;
+      border-top: 2px solid #087994;
+      outline-offset: none;
+    }
+
+      {
+      % comment %
+    }
+
+    css for bottom menu {
+      % endcomment %
+    }
+
+    .navbar-menu a {
+      color: #000 !important;
+      cursor: pointer;
+      display: block;
+      padding: 1rem 1.5rem;
+      text-decoration: none;
+      transition: background-color .16s ease-in;
+    }
+
+    .navbar-menu a:hover {
+      background-color: #7f5604;
+      color: #fff !important;
+    }
+
+    .navbar-menu .menu {
+      display: block;
+      text-align: center;
+    }
+
+    .navbar-menu .menu li {
+      display: inline-block;
+    }
+
+    .navbar-menu .menu li:hover>.submenu {
+      display: block;
+      -webkit-animation-name: showSubMenu;
+      -webkit-animation-duration: .4s;
+    }
+
+    .navbar-menu .menu li ul {
+      background-color: #f08080;
+      display: none;
+      position: absolute;
+    }
+
+    .navbar-menu .menu li ul li {
+      display: block;
+    }
+
+    .navbar-menu .menu li ul li a:active {
+      -webkit-animation-name: hideSubMenu;
+      -webkit-animation-duration: .4s;
+    }
+
+    .navbar {
+      position: relative;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -ms-flex-align: center;
+      align-items: center;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      padding: 0px;
+    }
+
+    .nav-item {
+      margin: 0 auto;
+    }
+
+    .active a {
+      color: #B27D12 !important;
+    }
+
+    .nav-link {
+      color: #000 !important;
+      cursor: pointer;
+      display: block;
+      padding: 1rem 1.5rem !important;
+      text-decoration: none;
+      transition: background-color .16s ease-in;
+      font-size: 17px;
+
+        {
+        % comment %
+      }
+
+      padding:17px 28px !important;
+
+        {
+        % endcomment %
+      }
+    }
+
+    .navbar-nav li {
+      display: inline-block;
+      line-height: 1.5;
+    }
+
+    .navbar-dark .navbar-toggler-icon {
+      filter: brightness(0.1) sepia(2) hue-rotate(15deg) saturate(200);
+      float: right;
+    }
+
+    .navbar-toggler {
+      margin: auto 0 auto auto
+    }
+
+    .gold-leaf {
+      background: url('{% static 'images/gold-leaf.png' %}') no-repeat center center fixed;
+    }
+
+    .catsandstars {
+      background-image: url("{% static 'images/coat-of-arms-112.png' %}"),
       url("{% static 'images/coat-of-arms-112.png' %}");
-  background-color: transparent;
-}
+      background-color: transparent;
+    }
 
-.read_more_prayer{
-  float: right;
-  font-size: 14px;
-  color: #b37c13;
-}
+    .read_more_prayer {
+      float: right;
+      font-size: 14px;
+      color: #b37c13;
+    }
 
-.read_more_prayer:hover{
-  float: right;
-  font-size: 14px;
-  color: #66470c;
-}
+    .read_more_prayer:hover {
+      float: right;
+      font-size: 14px;
+      color: #66470c;
+    }
 
-.jumbotron {
-    padding: 1rem 1rem;
-    margin-bottom: 2rem;
-    border-radius: .3rem;
-}
-</style>
+    .jumbotron {
+      padding: 1rem 1rem;
+      margin-bottom: 2rem;
+      border-radius: .3rem;
+    }
+  </style>
 
-	
+
 </head>
 
 <body>
 
   <!-- Navigation -->
   {% with url_name=request.resolver_match.url_name %}
- 
+
   {% endwith %}
   <!-- Page Content -->
   <div class="container-fluid" style="margin-top:-57px">
-  <!-- new code for video banner-->
+    <!-- new code for video banner-->
 
-  <!-- new code for video banner ends here-->
-  <header>
-  <div class="overlay"></div>
-  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-    <source src="{% static 'videos/1010945504-preview.mp4' %}" type="video/mp4">
-  </video>
-  <div class="container h-100">
-    <div class="d-flex h-100 text-center align-items-center">
-      <div class="w-100 text-white">
-        <h1 class="display-3" style="font-family: Kingthings Petrock;font-size: 6.5rem;">WELCOME TO MGSOSA</h1>
-        <p class="lead mb-0" style="color:#fff;font-family: Kingthings Petrock;font-size: 2.25rem;">Mor Gregorios Syriac Orthodox Student Association</p>
-      </div>
-    </div>
-  </div>
-  
-</header>
- <div class="catsandstars" style="min-height:27px">&nbsp;</div>
-{% comment %} <header> {% endcomment %}
-{% with url_name=request.resolver_match.url_name %}
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark static-top navbar-menu">
-    <div class="container" style="margin:0 auto">
-         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>    
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto" style="margin:0 auto">
-                <li class="nav-item {% if url_name == 'home' %} active {% endif %}">
-                <a class="nav-link" href="{% url 'home' %}">Home
-                    <span class="sr-only">(current)</span>
-                </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if url_name == 'about' %} active {% endif %}" href="{% url 'about' %}">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if url_name == 'events' %} active {% endif %}" href="{% url 'events' %}">Events</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if url_name == 'community' %} active {% endif %}" href="{% url 'community' %}">Community</a>
-                </li>
-                 <li class="nav-item">
-                    <a class="nav-link {% if url_name == 'dailyPrayer' %} active {% endif %}" href="{% url 'dailyPrayer' %}">Daily Prayer</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if url_name == 'contact' %} active {% endif %}" href="{% url 'contact' %}">Contact</a>
-                </li>
-            </ul>
+    <!-- new code for video banner ends here-->
+    <header>
+      <div class="overlay"></div>
+      <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+        <source src="{% static 'videos/1010945504-preview.mp4' %}" type="video/mp4">
+      </video>
+      <div class="container h-100">
+        <div class="d-flex h-100 text-center align-items-center">
+          <div class="w-100 text-white">
+            <h1 class="display-3" style="font-family: Kingthings Petrock;font-size: 6.5rem;">WELCOME TO MGSOSA</h1>
+            <p class="lead mb-0" style="color:#fff;font-family: Kingthings Petrock;font-size: 2.25rem;">Mor Gregorios
+              Syriac Orthodox Student Association</p>
+            <p class="lead mb-0" style="color:#fff;font-family: Kingthings Petrock;font-size: 1.75rem;">of north america
+            </p>
+          </div>
         </div>
+      </div>
 
-       
-    </div>
-</nav>
-{% endwith %}
-    
-        <!-- section for banner ends here-->
+    </header>
+    <div class="catsandstars" style="min-height:27px">&nbsp;</div>
+    {% comment %} <header> {% endcomment %}
+      {% with url_name=request.resolver_match.url_name %}
+      <!-- Navigation -->
+      <nav class="navbar navbar-expand-lg navbar-dark static-top navbar-menu">
+        <div class="container" style="margin:0 auto">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto" style="margin:0 auto">
+              <li class="nav-item {% if url_name == 'home' %} active {% endif %}">
+                <a class="nav-link" href="{% url 'home' %}">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if url_name == 'about' %} active {% endif %}" href="{% url 'about' %}">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if url_name == 'events' %} active {% endif %}"
+                  href="{% url 'events' %}">Events</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if url_name == 'community' %} active {% endif %}"
+                  href="{% url 'community' %}">Community</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if url_name == 'dailyPrayer' %} active {% endif %}"
+                  href="{% url 'dailyPrayer' %}">Daily Prayer</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if url_name == 'contact' %} active {% endif %}"
+                  href="{% url 'contact' %}">Contact</a>
+              </li>
+            </ul>
+          </div>
+
+
+        </div>
+      </nav>
+      {% endwith %}
+
+      <!-- section for banner ends here-->
   </div>
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
-        
+
         <div class="row mt-5 ">
-	    
-      <div class="col-xs-12 col-md-6 prayer-container">
-	        <div class="bg bg-left">
-	        	<h2 class="black-color mb-3">Prayer of the Hour</h2>
-            <h4 class="red-color mb-3">{{ prayer }}<h4>
-            
-             <div class="col-sm-12 lead" id="prayer" style="color:#898a96;line-height:30px">
-        </div><br/>
-        
-            <h5 class="black-color">Powered by <a href="{% url 'qleedo' %}">Qleedo</a></h5>
-            <div style="width:100%;float:right">
-          <a href="{% url 'dailyPrayer' %}" class="read_more_prayer" style="">Read More</a>
-        </div>
-	        </div>
-	    </div>
-	    <div class="col-xs-12 col-md-6" style="padding-left: 5px;">
-           
+
+          <div class="col-xs-12 col-md-6 prayer-container">
+            <div class="bg bg-left">
+              <h2 class="black-color mb-3">Prayer of the Hour</h2>
+              <h4 class="red-color mb-3">{{ prayer }}<h4>
+
+                  <div class="col-sm-12 lead" id="prayer" style="color:#898a96;line-height:30px">
+                  </div><br />
+
+                  <h5 class="black-color">Powered by <a href="{% url 'qleedo' %}">Qleedo</a></h5>
+                  <div style="width:100%;float:right">
+                    <a href="{% url 'dailyPrayer' %}" class="read_more_prayer" style="">Read More</a>
+                  </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-6" style="padding-left: 5px;">
+
             <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="gold-color">Mor Gregorios</h1>
-    <p class="lead" style="font-family: Kingthings Petrock;">St. Gregorios Geevarghese, popularly known as "Parumala Thirumeni", was a great monk who through continuous prayers, made it clear to the world that Prayer and devotion is mightier than any worldly possession. The Holy Father's short life was remarkable in many respects and after a saintly life of prayer, he become the brightest jewel of the Universal Syrian Church. In 1922, under the student initiative of the Malankara Metropolitan, Mor Athanasius Paulose, known as “Valiya Thirumeni”, the organization came to be named after his spiritual guru, St. Gregorios Geevarghese of Parumala. We formally recognize ourselves to this day as the Mar Gregorios Syriac Orthodox Student Association.  </p>
-    <div class="wrap">
-<img src="{% static 'images/st_gregorios_geevarghese.png' %}" style="height:220px;" alt="Mgsosa">
-  </div>
-  </div>
-</div>
-	    </div>
-	</div>
-	{% comment %} container for events {% endcomment %}
-<div class="container">
-
-      <!-- Page Heading -->
-      <h1 class="my-4 gold-color">Events
-        {% comment %} <small>Secondary Text</small> {% endcomment %}
-      </h1>
-
-      <!-- Project One -->
-      <div class="row">
-        <div class="col-md-7">
-          <a href="#">
-            <img class="img-fluid rounded mb-3 mb-md-0" src="{% static 'images/virtual_renewal.png' %}" alt="">
-          </a>
+              <div class="container">
+                <h1 class="gold-color">Mor Gregorios</h1>
+                <p class="lead" style="font-family: Kingthings Petrock;">St. Gregorios Geevarghese, popularly known as
+                  "Parumala Thirumeni", was a great monk who through continuous prayers, made it clear to the world that
+                  Prayer and devotion is mightier than any worldly possession. The Holy Father's short life was
+                  remarkable in many respects and after a saintly life of prayer, he become the brightest jewel of the
+                  Universal Syrian Church. In 1922, under the student initiative of the Malankara Metropolitan, Mor
+                  Athanasius Paulose, known as “Valiya Thirumeni”, the organization came to be named after his spiritual
+                  guru, St. Gregorios Geevarghese of Parumala. We formally recognize ourselves to this day as the Mar
+                  Gregorios Syriac Orthodox Student Association. </p>
+                <div class="wrap">
+                  <img src="{% static 'images/st_gregorios_geevarghese.png' %}" style="height:220px;" alt="Mgsosa">
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-md-5">
-          <h3>Virtual Renewal Conference </h3>
-          <p>Join us from June 4th-6th for our virtual conference during the season of Pentecost! Hear from our special guest speakers about renewal with the Holy Spirit!  </p>
-          <a class="btn btn-events-primary" target="_blank" href="https://forms.gle/TfrBnNp22xFcktwe8">Register</a>
+        {% comment %} container for events {% endcomment %}
+        <div class="container">
+
+          <!-- Page Heading -->
+          <h1 class="my-4 gold-color">Events
+            {% comment %} <small>Secondary Text</small> {% endcomment %}
+          </h1>
+
+          <!-- Project One -->
+          <div class="row">
+            <div class="col-md-7">
+              <a href="#">
+                <img class="img-fluid rounded mb-3 mb-md-0" src="{% static 'images/virtual_renewal.png' %}" alt="">
+              </a>
+            </div>
+            <div class="col-md-5">
+              <h3>Virtual Renewal Conference </h3>
+              <p>Join us from June 4th-6th for our virtual conference during the season of Pentecost! Hear from our
+                special guest speakers about renewal with the Holy Spirit! </p>
+              <a class="btn btn-events-primary" target="_blank" href="https://forms.gle/TfrBnNp22xFcktwe8">Register</a>
+            </div>
+          </div>
+          <!-- /.row -->
+
+          <hr>
+
+          <!-- Project Two -->
+          <div class="row">
+            <div class="col-md-7">
+              <a href="#">
+                <img class="img-fluid rounded mb-3 mb-md-0" src="{% static 'images/event_home_2.png' %}" alt="">
+              </a>
+            </div>
+            <div class="col-md-5">
+              <h3>Event Two</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque
+                repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam
+                tempore.</p>
+              <a class="btn btn-events-primary" href="{% url 'events' %}">View Project</a>
+            </div>
+          </div>
+          <!-- /.row -->
+
+          <hr>
+
+          <!-- Project Three -->
+          <div class="row">
+            <div class="col-md-7">
+              <a href="#">
+                <img class="img-fluid rounded mb-3 mb-md-0" src="{% static 'images/event_home_3.png' %}" alt="">
+              </a>
+            </div>
+            <div class="col-md-5">
+              <h3>Event Three</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, temporibus, dolores, at, praesentium
+                ut unde repudiandae voluptatum sit ab debitis suscipit fugiat natus velit excepturi amet commodi
+                deleniti alias possimus!</p>
+              <a class="btn btn-events-primary" href="{% url 'events' %}">View Project</a>
+            </div>
+          </div>
+          <!-- /.row -->
+
+          <hr>
+
+          <!-- Project Four -->
+          <div class="row">
+
+            <div class="col-md-7">
+              <a href="#">
+                <img class="img-fluid rounded mb-3 mb-md-0" src="{% static 'images/event_home_4.png' %}" alt="">
+              </a>
+            </div>
+            <div class="col-md-5">
+              <h3>Event Four</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, quidem, consectetur, officia rem
+                officiis illum aliquam perspiciatis aspernatur quod modi hic nemo qui soluta aut eius fugit quam in
+                suscipit?</p>
+              <a class="btn btn-events-primary" href="{% url 'events' %}">View Project</a>
+            </div>
+          </div>
+          <!-- /.row -->
+
+          <hr>
+
+          <!-- Pagination -->
+
+
         </div>
-      </div>
-      <!-- /.row -->
-
-      <hr>
-
-      <!-- Project Two -->
-      <div class="row">
-        <div class="col-md-7">
-          <a href="#">
-            <img class="img-fluid rounded mb-3 mb-md-0" src="{% static 'images/event_home_2.png' %}" alt="">
-          </a>
-        </div>
-        <div class="col-md-5">
-          <h3>Event Two</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
-          <a class="btn btn-events-primary" href="{% url 'events' %}">View Project</a>
-        </div>
-      </div>
-      <!-- /.row -->
-
-      <hr>
-
-      <!-- Project Three -->
-      <div class="row">
-        <div class="col-md-7">
-          <a href="#">
-            <img class="img-fluid rounded mb-3 mb-md-0" src="{% static 'images/event_home_3.png' %}" alt="">
-          </a>
-        </div>
-        <div class="col-md-5">
-          <h3>Event Three</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, temporibus, dolores, at, praesentium ut unde repudiandae voluptatum sit ab debitis suscipit fugiat natus velit excepturi amet commodi deleniti alias possimus!</p>
-          <a class="btn btn-events-primary" href="{% url 'events' %}">View Project</a>
-        </div>
-      </div>
-      <!-- /.row -->
-
-      <hr>
-
-      <!-- Project Four -->
-      <div class="row">
-
-        <div class="col-md-7">
-          <a href="#">
-            <img class="img-fluid rounded mb-3 mb-md-0" src="{% static 'images/event_home_4.png' %}" alt="">
-          </a>
-        </div>
-        <div class="col-md-5">
-          <h3>Event Four</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, quidem, consectetur, officia rem officiis illum aliquam perspiciatis aspernatur quod modi hic nemo qui soluta aut eius fugit quam in suscipit?</p>
-          <a class="btn btn-events-primary" href="{% url 'events' %}">View Project</a>
-        </div>
-      </div>
-      <!-- /.row -->
-
-      <hr>
-
-      <!-- Pagination -->
-      
-
-    </div>
-    <!-- /.container for events -->
+        <!-- /.container for events -->
         <!-- section for members-->
-    <!-- Team -->
-<section id="team" class="pb-5">
-    <div class="container">
-        <h5 class="section-title h1 gold-color">Student Meet ups</h5>
-        <h6>Coming soon!</h6>
-    </div>
-</section>
-<!-- Team -->
+        <!-- Team -->
+        <section id="team" class="pb-5">
+          <div class="container">
+            <h5 class="section-title h1 gold-color">Student Meet ups</h5>
+            <h6>Coming soon!</h6>
+          </div>
+        </section>
+        <!-- Team -->
         <!--section for memebers ends here-->
       </div>
     </div>
   </div>
-{% include 'includes/footer.html' %}
+  {% include 'includes/footer.html' %}
 
-<script>
+  <script>
     'use strict';
 
     function removeTags(str) {
-      if ((str===null) || (str===''))
-      return false;
+      if ((str === null) || (str === ''))
+        return false;
       else
-      str = str.toString();
-      return str.replace( /(<([^>]+)>)/ig, '');
-   }
+        str = str.toString();
+      return str.replace(/(<([^>]+)>)/ig, '');
+    }
 
 
     var div = document.getElementById('prayer');
     (async () => {
-    let url = '{{ prayerurl }}';
-    fetch(url)
-      .then(function (response) {
-        switch (response.status) {
-        // status "OK"
-          case 200:
-            return response.text();
-          // status "Not Found"
-          case 404:
-            throw response;
-        }
-      })
-      .then(function (template) {
-        var updatedTemplate = template.replace('img_prayer_footnote.png', '/static/images/img_prayer_footnote.png');
-        var newstring = updatedTemplate.replace('prayer_end.png', '/static/images/prayer_end.png');
-        div.innerHTML += removeTags(newstring).substring(0,955);
-        console.log(template);
-      })
-      .catch(function (response) {
-        // "Not Found"
-        console.log(response.statusText);
-      });
+      let url = '{{ prayerurl }}';
+      fetch(url)
+        .then(function (response) {
+          switch (response.status) {
+            // status "OK"
+            case 200:
+              return response.text();
+            // status "Not Found"
+            case 404:
+              throw response;
+          }
+        })
+        .then(function (template) {
+          var updatedTemplate = template.replace('img_prayer_footnote.png', '/static/images/img_prayer_footnote.png');
+          var newstring = updatedTemplate.replace('prayer_end.png', '/static/images/prayer_end.png');
+          div.innerHTML += removeTags(newstring).substring(0, 955);
+          console.log(template);
+        })
+        .catch(function (response) {
+          // "Not Found"
+          console.log(response.statusText);
+        });
     })()
   </script>
