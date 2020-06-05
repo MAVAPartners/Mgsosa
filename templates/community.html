@@ -36,8 +36,6 @@
 
 {% block banner %}
 {% load static %}
-{% comment %} <img src="{% static 'images/new_red_banner.png' %}" class="img-fluid" height="400" alt="Responsive image">
-{% endcomment %}
 {% endblock %}
 {% block content %}
 {% load static %}
@@ -55,8 +53,7 @@
                     charitable causes around the Archdiocese. Spread awareness of local events with the others around
                     the Archdiocese. Engage in discussions with fellow peers. Whatever you would like to share, you can
                     do so with the MGSOSA forum feature. Join us and become part of the online community today.
-                    {% comment %} <a href="mailto:mava.partnersin@gmail.com">Admin Email</a> {% endcomment %}
-                    <br>
+                     <br>
                     <div class="button-alignment">
                         {% if request.user.is_authenticated %}
                         <a class="margin-button"
