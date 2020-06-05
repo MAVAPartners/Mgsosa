@@ -321,6 +321,14 @@
       margin-bottom: 2rem;
       border-radius: .3rem;
     }
+
+    .logo {
+    position: absolute;
+    display: block;
+    width: 200px;
+    margin: 4% 0px 0px 4%;
+    z-index: 1000;
+}
   </style>
 
 
@@ -339,8 +347,9 @@
     <!-- new code for video banner ends here-->
     <header>
       <div class="overlay"></div>
+      <img src="{% static 'images/MGSOSA_new.png' %}" class="logo" alt="" />
       <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-        <source src="{% static 'videos/1010945504-preview.mp4' %}" type="video/mp4">
+        <source src="{% static 'videos/1010945504-preview.mp4' %}"  type="video/mp4" >
       </video>
       <div class="container h-100">
         <div class="d-flex h-100 text-center align-items-center">
@@ -348,12 +357,12 @@
             <h1 class="display-3" style="font-family: Kingthings Petrock;font-size: 6.5rem;">WELCOME TO MGSOSA</h1>
             <p class="lead mb-0" style="color:#fff;font-family: Kingthings Petrock;font-size: 2.25rem;">Mor Gregorios
               Syriac Orthodox Student Association</p>
-            <p class="lead mb-0" style="color:#fff;font-family: Kingthings Petrock;font-size: 1.75rem;">of north america
+            <p class="lead mb-0" style="color:#fff;font-family: Kingthings Petrock;font-size: 1.75rem;">of North America
             </p>
           </div>
         </div>
       </div>
-
+      
     </header>
     <div class="catsandstars" style="min-height:27px">&nbsp;</div>
     {% comment %} <header> {% endcomment %}
@@ -377,7 +386,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link {% if url_name == 'events' %} active {% endif %}"
-                  href="{% url 'events' %}">Events</a>
+                  href="{% url 'pastEvents' %}">Events</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link {% if url_name == 'community' %} active {% endif %}"
@@ -389,7 +398,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link {% if url_name == 'contact' %} active {% endif %}"
-                  href="mailto:contactus@mgsosa.com">Contact</a>
+                  href="{% url 'contact' %}">Contact</a>
               </li>
             </ul>
           </div>
@@ -468,7 +477,7 @@
           <hr>
 
           <!-- Project Two -->
-          <div class="row">
+          {% comment %} <div class="row">
             <div class="col-md-7">
               <a href="#">
                 <img class="img-fluid rounded mb-3 mb-md-0" src="{% static 'images/event_home_2.png' %}" alt="">
@@ -481,13 +490,13 @@
                 tempore.</p>
               <a class="btn btn-events-primary" href="{% url 'events' %}">View Project</a>
             </div>
-          </div>
+          </div> {% endcomment %}
           <!-- /.row -->
 
-          <hr>
+          {% comment %} <hr> {% endcomment %}
 
           <!-- Project Three -->
-          <div class="row">
+          {% comment %} <div class="row">
             <div class="col-md-7">
               <a href="#">
                 <img class="img-fluid rounded mb-3 mb-md-0" src="{% static 'images/event_home_3.png' %}" alt="">
@@ -500,13 +509,13 @@
                 deleniti alias possimus!</p>
               <a class="btn btn-events-primary" href="{% url 'events' %}">View Project</a>
             </div>
-          </div>
+          </div> {% endcomment %}
           <!-- /.row -->
 
-          <hr>
+          {% comment %} <hr> {% endcomment %}
 
           <!-- Project Four -->
-          <div class="row">
+          {% comment %} <div class="row">
 
             <div class="col-md-7">
               <a href="#">
@@ -520,10 +529,10 @@
                 suscipit?</p>
               <a class="btn btn-events-primary" href="{% url 'events' %}">View Project</a>
             </div>
-          </div>
+          </div> {% endcomment %}
           <!-- /.row -->
 
-          <hr>
+          {% comment %} <hr> {% endcomment %}
 
           <!-- Pagination -->
 
