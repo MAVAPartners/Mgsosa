@@ -143,6 +143,10 @@ section .section-title {
     font-family: myFirstFont;
     src: url('{% static 'fonts/kingthings-petrock/Kingthings Petrock.ttf' %}');
   }
+  .card {
+    
+    border: none; 
+}
 {% comment %} /* member section css ends here */ {% endcomment %}
 </style>
 {% endblock %}
@@ -173,17 +177,17 @@ section .section-title {
     <section id="team" class="pb-0">
     <div class="container">
         <h5 class="section-title h1 gold-color" style="font-family: Kingthings Petrock;">Board Members</h5>
-    <div class="row">
+    <div class="row justify-content-center">
             <!-- Team member -->
             <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="image-flip" >
-                    <div class="mainflip flip-0">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="{% static 'images/Chelsea.png' %}" alt="Chelsea Reji"></p>
-                                    <h4 class="card-title">Chelsea Reji</h4>
-                                    <p class="card-text">The Joint Treasurer of the Archdiocesan Youth Leadership Team</p>
+                                    <p><img class=" img-fluid" src="{% static 'images/bishop.png' %}" alt="Nithin Panicker"></p>
+                                    <h4 class="card-title">His Eminence Mor Titus Yeldho</h4>
+                                    <p class="card-text">Archbishop, President of MGSOSA</p><p>&nbsp;</p>
                                     <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
                                 </div>
                             </div>
@@ -191,8 +195,116 @@ section .section-title {
                         <div class="backside">
                             <div class="card">
                                 <div class="card-body text-center mt-4">
-                                    <h4 class="card-title">Chelsea Reji</h4>
-                                    <p class="card-text">The Joint Treasurer of the Archdiocesan Youth Leadership Team, attends St. Mary’s JSO Church, in White Plains, New York. Chelsea has completed her Bachelor’s in Social and Behavioral Sciences with a minor in Psychology.</p>
+                                    <h4 class="card-title">Archbishop</h4>
+                                    <p class="card-text">His Eminence Mor Titus Yeldho is the Archbishop and Patriarchal Vicar for the Malankara Archdiocese since 2004, and the President of MGSOSA </p>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fa fa-skype"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fa fa-google"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ./Team member -->
+            
+            </div>
+            <div class="row justify-content-center">
+            
+            <!-- Team member -->
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><img class=" img-fluid" src="{% static 'images/Zach.png' %}" alt="Zach Varghese"></p>
+                                    <h4 class="card-title">Fr. Zach Varghese</h4>
+                                    <p class="card-text">VP of MGSOSA 2019-2021</p><br/><br/>
+                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside" style="width:100%">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <h4 class="card-title">Fr. Zach Varghese, MD, MPH</h4>
+                                    <p class="card-text">VP of MGSOSA 2019-2021.<br/> Vicar, St. Thomas MSO Church, Austin<br/>vp@mgsosa.com </p>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fa fa-skype"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fa fa-google"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ./Team member -->
+            <!-- Team member -->
+            
+            <!-- ./Team member -->
+
+        </div> 
+         </div>
+         <div class="row justify-content-center">
+           <!-- Team member -->
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><img class=" img-fluid" src="{% static 'images/Nevin.png' %}" alt="Nevin Varghese"></p>
+                                    <h4 class="card-title">Nevin Varghese</h4>
+                                    <p class="card-text">The Secretary of MGSOSA.</p><br/>
+                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <h4 class="card-title">Nevin Varghese</h4>
+                                    <p class="card-text">The Secretary of MGSOSA. His home parish is St. George MSO church in Carteret, NJ, where he is currently a Sunday School teacher and an altar assistant. He has served in both these roles for nearly the last decade. </p><br/>
                                     <ul class="list-inline">
                                         <li class="list-inline-item">
                                             <a class="social-icon text-xs-center" target="_blank" href="#">
@@ -270,56 +382,9 @@ section .section-title {
                 </div>
             </div>
             <!-- ./Team member -->
-            <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                    <div class="mainflip">
-                        <div class="frontside">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="{% static 'images/Nevin.png' %}" alt="Nevin Varghese"></p>
-                                    <h4 class="card-title">Nevin Varghese</h4>
-                                    <p class="card-text">The Secretary of MGSOSA.</p><br/>
-                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="backside">
-                            <div class="card">
-                                <div class="card-body text-center mt-4">
-                                    <h4 class="card-title">Nevin Varghese</h4>
-                                    <p class="card-text">The Secretary of MGSOSA. His home parish is St. George MSO church in Carteret, NJ, where he is currently a Sunday School teacher and an altar assistant. He has served in both these roles for nearly the last decade. </p><br/>
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fa fa-skype"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fa fa-google"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ./Team member -->
-            </div>
-            <div class="row justify-content-center">
+            
+        </div> 
+         </div><div class="row justify-content-center">
             <!-- Team member -->
             <div class="col-xs-12 col-sm-6 col-md-4">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
@@ -370,14 +435,14 @@ section .section-title {
             <!-- ./Team member -->
             <!-- Team member -->
             <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                    <div class="mainflip">
+                <div class="image-flip" >
+                    <div class="mainflip flip-0">
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="{% static 'images/Zach.png' %}" alt="Zach Varghese"></p>
-                                    <h4 class="card-title">Fr. Zach Varghese</h4>
-                                    <p class="card-text">VP of MGSOSA 2019-2021</p><br/><br/>
+                                    <p><img class=" img-fluid" src="{% static 'images/Chelsea.png' %}" alt="Chelsea Reji"></p>
+                                    <h4 class="card-title">Chelsea Reji</h4>
+                                    <p class="card-text">The Joint Treasurer of the Archdiocesan Youth Leadership Team</p>
                                     <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
                                 </div>
                             </div>
@@ -385,8 +450,8 @@ section .section-title {
                         <div class="backside">
                             <div class="card">
                                 <div class="card-body text-center mt-4">
-                                    <h4 class="card-title">Fr. Zach Varghese, MD, MPH</h4>
-                                    <p class="card-text">VP of MGSOSA 2019-2021.<br/> Vicar, St. Thomas MSO Church, Austin<br/>vp@mgsosa.com</p>
+                                    <h4 class="card-title">Chelsea Reji</h4>
+                                    <p class="card-text">The Joint Treasurer of the Archdiocesan Youth Leadership Team, attends St. Mary’s JSO Church, in White Plains, New York. Chelsea has completed her Bachelor’s in Social and Behavioral Sciences with a minor in Psychology.</p>
                                     <ul class="list-inline">
                                         <li class="list-inline-item">
                                             <a class="social-icon text-xs-center" target="_blank" href="#">
