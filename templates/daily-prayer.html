@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block style %}
-    {% load static %}
-    <link href="{% static 'css/contact.css' %}" rel="stylesheet">
+{% load static %}
+<link href="{% static 'css/contact.css' %}" rel="stylesheet">
 <style>
   body {
     background: url('{% static 'images/parchemnt_paper2.png' %}') no-repeat center center fixed;
@@ -10,62 +10,68 @@
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    font-family:Kingthings Petrock !important;
+    font-family: Kingthings Petrock !important;
   }
-  #open{
-      display:none !important;
+
+  #open {
+    display: none !important;
   }
 </style>
 {% endblock %}
 
 {% block banner %}
-    {% load static %}
+{% load static %}
+{% comment %} <img src="{% static 'images/new_red_banner.png' %}" class="img-fluid" height="400" alt="Responsive image">
+{% endcomment %}
 {% endblock %}
 {% block content %}
 {% load static %}
 
 <div class="container animated fadeIn">
-    <div class="row">
-        <h1 class="header-title mt-3"> Daily Prayer </h1>
-        {% include 'includes/breadcrumb.html' %}
-        <hr>
-        <h2 class="black-color" style="width:100%"><span class="gold-color" style="font-size:48px;margin-left:10%" >Qleedo</span> <span style="vertical-align: sub;font-size:16px">Powered by <a href="http://mavapartners.com/" target="_blank" class="site_link_color">Mava</a></span></h2><br/>
-        </div>
-        <div class="col-sm-12 content-p" id="prayer">
-        </div>
+  <div class="row">
+    <h1 class="header-title mt-3"> Daily Prayer </h1>
+    {% include 'includes/breadcrumb.html' %}
+    <hr>
+    <h2 class="black-color" style="width:100%"><span class="gold-color">Qleedo</span></h2><br />
+  </div>
+  <div class="col-sm-12 content-p" id="prayer">
+  </div>
 
-        <h2 class="black-color" style="width:100%">Download <span class="gold-color" >Qleedo Now</span></h2><br/>
-        <div class="content-p">
-              {% comment %} <h3 class="col-sm-3 mb-5 mt-4 " style="margin: 0px;float: left;">Download </h3> {% endcomment %}
-              <div class="row justify-content-center" style="margin: 12px;">
-                            <div class="col-sm-5" style="float:left;margin-right: 2px;">
-                              <a href="https://play.google.com/store/apps/details?id=com.mediaindia.qleedo&hl=en_IN" target="_blank" style="float:left;">
-                                <img class="d-block w-100" src="{% static 'images/google.png' %}" style="" alt="Android">
-                              </a>
-                            </div>
-                            <div class="col-sm-5" style="float:left;margin-left: 2px;">
-                              <a href="https://apps.apple.com/in/developer/qleedo-foundation/id1266807075" target="_blank" style="float:left;">
-                                <img class="d-block w-100" src="{% static 'images/ios.png' %}" style="" alt="Apple">
-                              </a>
-                            </div>
-                </div>
-                <h4><a href="{% url 'donations' %}">Donate</a> for Mgsosa</h4>
-            </div>
+  <h2 class="black-color" style="width:100%">Download <span class="gold-color">Qleedo</span></h2>
+  <h6 class="black-color" style="width:100%">Powered by <a href="http://mavapartners.com/" target="_blank"
+      class="site_link_color">Mavapartners</a></h6>
+  <div class="content-p">
+    {% comment %} <h3 class="col-sm-3 mb-5 mt-4 " style="margin: 0px;float: left;">Download </h3> {% endcomment %}
+    <div class="row justify-content-center" style="margin: 12px;">
+      <div class="col-sm-5" style="float:left;margin-right: 2px;">
+        <a href="https://play.google.com/store/apps/details?id=com.mediaindia.qleedo&hl=en_IN" target="_blank"
+          style="float:left;">
+          <img class="d-block w-100" src="{% static 'images/google.png' %}" style="" alt="Android">
+        </a>
+      </div>
+      <div class="col-sm-5" style="float:left;margin-left: 2px;">
+        <a href="https://apps.apple.com/in/developer/qleedo-foundation/id1266807075" target="_blank"
+          style="float:left;">
+          <img class="d-block w-100" src="{% static 'images/ios.png' %}" style="" alt="Apple">
+        </a>
+      </div>
     </div>
+  </div>
 </div>
-  <!--layout for 2 images ends-->
+</div>
+<!--layout for 2 images ends-->
 {% endblock %}
 
 {% block script %}
-  <script>
-    'use strict';
-    var div = document.getElementById('prayer');
-    (async () => {
+<script>
+  'use strict';
+  var div = document.getElementById('prayer');
+  (async () => {
     let url = '{{ prayerUrl }}';
     fetch(url)
       .then(function (response) {
         switch (response.status) {
-        // status "OK"
+          // status "OK"
           case 200:
             return response.text();
           // status "Not Found"
@@ -76,16 +82,23 @@
       .then(function (template) {
         var updatedTemplate = template.replace('img_prayer_footnote.png', '/static/images/img_prayer_footnote.png');
         var newstring = updatedTemplate.replace('prayer_end.png', '/static/images/prayer_end.png');
-        div.innerHTML += newstring
+        var fontNeue = newstring.replace(/Helvetica Neue/g, "Kingthings Petrock");
+        var fontHelvetica = fontNeue.replace(/Helvetica/g, "Kingthings Petrock");
+        var fontArial = fontHelvetica.replace(/Arial/g, "Kingthings Petrock");
+        var fontFinal = fontArial.replace(/sans-serif/g, "Kingthings Petrock");
+
+        // var fontUpdate = newstring.replace('face="Helvetica Neue, Helvetica, Arial, sans-serif"', 'face=" Kingthings Petrock"');
+        // var fontUpdateNew = fontUpdate.replace("font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;", 'face=" Kingthings Petrock"');
+        div.innerHTML += fontFinal
         console.log(template);
       })
       .catch(function (response) {
         // "Not Found"
         console.log(response.statusText);
       });
-    })()
-    var onClicker = function(id) {
-      $(id).slideToggle("slow", "swing");
-    }
-  </script>
+  })()
+  var onClicker = function (id) {
+    $(id).slideToggle("slow", "swing");
+  }
+</script>
 {% endblock %}
