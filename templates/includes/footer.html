@@ -4,10 +4,11 @@
 <footer class="container">
   <hr>
   <div>
-    <h4 style="text-align:center;">Mor GreGorios Syriac Orthodox Student Association</h4>
+    <h4 style="text-align:center;">Mor Gregorios Syriac Orthodox Student Association</h4>
     <div class="contact-info">
-      <p style="text-align: center;">8 East 79th Street •&nbsp;New York, NY 10075<br>
-        Phone: <a href="tel:344755111">344-755-111</a>&nbsp;•&nbsp;<a href="{% url 'dailyPrayer' %}"
+      <p style="text-align: center;">270 Whippany road •&nbsp;Whippany, New Jersey 07981<br>
+        {% comment %} Phone: <a href="tel:344755111">344-755-111 {% endcomment %}
+        </a>&nbsp;•&nbsp;<a href="{% url 'contact' %}"
           style="text-align: center;">Contact</a></p>
       <p style="text-align: center;"><a href="{% url 'pastEvents' %}">Events</a>&nbsp;•&nbsp;<a
           href="{% url 'contact' %}">Join our Mailing Lists</a>&nbsp;•&nbsp;<a
@@ -71,8 +72,8 @@
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
 {% comment %} for events tiles {% endcomment %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
-<script src="https://use.fontawesome.com/892dade262.js"></script>
+<script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+<script src="{% static 'js/fontawesome/892dade262.js' %}"></script>
 <script>
   $(document).ready(function () {
     $(".fancybox").fancybox({
