@@ -20,7 +20,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if url_name == 'events' %} active {% endif %}"
-                        href="{% url 'events' %}">Events</a>
+                        href="{% url 'pastEvents' %}">Events</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if url_name == 'community' %} active {% endif %}"
@@ -32,7 +32,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if url_name == 'contact' %} active {% endif %}"
-                        href="mailto:contactus@mgsosa.com">Contact</a>
+                        href="{% url 'contact' %}">Contact</a>
                 </li>
             </ul>
         </div>

@@ -4,13 +4,14 @@
 <footer class="container">
   <hr>
   <div>
-    <h4 style="text-align:center;">Mor GreGorios Syriac Orthodox Student Association</h4>
+    <h4 style="text-align:center;">Mor Gregorios Syriac Orthodox Student Association</h4>
     <div class="contact-info">
-      <p style="text-align: center;">8 East 79th Street •&nbsp;New York, NY 10075<br>
-        Phone: <a href="tel:344755111">344-755-111</a>&nbsp;•&nbsp;<a href="mailto:contactus@mgsosa.com"
+      <p style="text-align: center;">270 Whippany road •&nbsp;Whippany, New Jersey 07981<br>
+        {% comment %} Phone: <a href="tel:344755111">344-755-111 {% endcomment %}
+        </a>&nbsp;•&nbsp;<a href="{% url 'contact' %}"
           style="text-align: center;">Contact</a></p>
-      <p style="text-align: center;"><a href="{% url 'events' %}">Events</a>&nbsp;•&nbsp;<a
-          href="mailto:contactus@mgsosa.com">Join our Mailing Lists</a>&nbsp;•&nbsp;<a
+      <p style="text-align: center;"><a href="{% url 'pastEvents' %}">Events</a>&nbsp;•&nbsp;<a
+          href="{% url 'contact' %}">Join our Mailing Lists</a>&nbsp;•&nbsp;<a
           href="{% url 'donations' %}">Donate</a><br>
         {% comment %} <a href="/news/media">For the Media</a></p> {% endcomment %}
     </div>
@@ -24,13 +25,13 @@
     </div>
     <div>&nbsp;</div>
     <div class="footer-copyright container">
-      <p style="margin-bottom:4px !important">© 2020&nbsp;Mor GreGorios Syriac Orthodox Student Association.<br>
+      <p style="margin-bottom:4px !important">© 2020&nbsp;Mor Gregorios Syriac Orthodox Student Association.<br>
         <a href="{% url 'home' %}" style="font-size:16px;line-height:30px !important;">Home</a>
         | <a href="{% url 'about' %}" style="font-size:16px;line-height:30px;">About</a>
-        | <a href="{% url 'events' %}" style="font-size:16px;line-height:30px;">Events</a>
+        | <a href="{% url 'pastEvents' %}" style="font-size:16px;line-height:30px;">Events</a>
         | <a href="{% url 'community' %}" style="font-size:16px;line-height:30px;">Community</a>
         | <a href="{% url 'dailyPrayer' %}" style="font-size:16px;line-height:30px;">Daily Prayer</a>
-        | <a href="mailto:contactus@mgsosa.com" style="font-size:16px;line-height:30px;">Contact Us</a>
+        | <a href="{% url 'contact' %}" style="font-size:16px;line-height:30px;">Contact Us</a>
 
         {% comment %} <a href="{% url 'community' %}">Community</a> | <a href="{% url 'about' %}">About</a> | <a
           href="{% url 'dailyPrayer' %}">Daily Prayers</a><br> {% endcomment %}
@@ -71,8 +72,8 @@
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
 {% comment %} for events tiles {% endcomment %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
-<script src="https://use.fontawesome.com/892dade262.js"></script>
+<script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+<script src="{% static 'js/fontawesome/892dade262.js' %}"></script>
 <script>
   $(document).ready(function () {
     $(".fancybox").fancybox({
