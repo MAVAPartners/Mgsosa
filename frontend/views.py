@@ -226,6 +226,13 @@ def registration_view(request):
             user.save()
             #account = authenticate(email=email, password=password1)
             #login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            superusers_emails = User.objects.filter(
+                is_superuser=True).values('email')
+            toEmail = []
+            for email in superusers_emails:
+                toEmail.append(email['email'])
+            emailTemplate("Hello, \nFollowing message was received from the MGSOSA website: \n",
+                          "New user signup in the system, please verify user and do the needfull.", first_name+' '+last_name, 'contactus@mgsosa.com', '', toEmail)
             form = RegistrationForm()
             context['registration_form'] = form
             messages.success(
@@ -287,3 +294,29 @@ def logout_request(request):
     logout(request)
     messages.success(request, 'You are now successfully logged out')
     return HttpResponseRedirect('/login/')
+
+
+def emailTemplate(messageHeading, message, name, fromEmail, mobile, toEmails):
+    print('......email template......', message)
+    message_body = messageHeading
+    message_body = message_body + \
+        "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ \n"
+    message_body = message_body + "Name: " + name + '\n'
+    message_body = message_body + "Email: " + fromEmail + '\n'
+    message_body = message_body + "Phone: " + str(mobile) + '\n'
+    message_body = message_body + "Message: " + message + '\n'
+    message_body = message_body + \
+        "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n "
+    message_body = message_body + \
+        "When we pray with a heart full of devotion, God accepts it and we receive it back in the form of a blessing!\n\n"
+
+    message_body = message_body + "Powered by Team MAVA" + '\n'
+
+    print(name, fromEmail, mobile, message)
+
+    try:
+        send_mail(EMAIL_SUBJECT, message_body,
+                  fromEmail, toEmails)
+        # ,anoob.vm@mavapartners.com
+    except BadHeaderError:
+        return HttpResponse('Invalid header found.')
