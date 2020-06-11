@@ -26,7 +26,7 @@ TO_EMAIL = 'contactus@mgsosa.com'
 
 
 def home(request):
-    now = datetime.now()
+    """now = datetime.now()
     cur_time = now.strftime("%d %B %Y %H:%M:%S")
     url = 'https://pg-app-cwmbz0wd7eqrjvx5cr32ftd4gsdp3j.scalabl.cloud/1/functions/getPrayers'
     header = {'Content-Type': 'application/json', 'X-Parse-Application-Id': 'AcHG0EJiXqflSC7NbZ5PYtod4mSBfy7u0MqBjj0Z',
@@ -48,8 +48,8 @@ def home(request):
             prayerurl = '#'
     else:
         prayer = 'May God Bless You'
-        prayerurl = '#'
-    return render(request, 'home-sample.html', {'prayer': prayer, 'prayerurl': prayerurl})
+        prayerurl = '#'"""
+    return render(request, 'home-sample.html', {'prayer': '', 'prayerurl': ''})
 
 
 def about(request):
@@ -125,7 +125,8 @@ def community(request):
 
 
 def dailyPrayer(request):
-    now = datetime.now()
+    #url = request.GET.get('path')
+    """now = datetime.now()
     cur_time = now.strftime("%d %B %Y %H:%M:%S")
     url = 'https://pg-app-cwmbz0wd7eqrjvx5cr32ftd4gsdp3j.scalabl.cloud/1/functions/getPrayers'
     header = {'Content-Type': 'application/json', 'X-Parse-Application-Id': 'AcHG0EJiXqflSC7NbZ5PYtod4mSBfy7u0MqBjj0Z',
@@ -144,8 +145,8 @@ def dailyPrayer(request):
         else:
             prayerUrl = '#'
     else:
-        prayerUrl = '#'
-    return render(request, 'daily-prayer.html', {'prayerUrl': prayerUrl})
+        prayerUrl = '#'"""
+    return render(request, 'daily-prayer.html', {'detailsUrl': 'url'})
 
 
 def home_sample(request):

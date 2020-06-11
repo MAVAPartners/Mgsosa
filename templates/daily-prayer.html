@@ -16,6 +16,29 @@
   #open {
     display: none !important;
   }
+
+  .loader {
+    border: 16px solid #fcf7e4;
+    /* Light grey */
+    border-top: 16px solid #7f5604;
+    /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 </style>
 {% endblock %}
 
@@ -35,6 +58,9 @@
     <h2 class="black-color" style="width:100%"><span class="gold-color">Qleedo</span></h2><br />
   </div>
   <div class="col-sm-12 content-p" id="prayer">
+  </div>
+  <div style="width:100%" id="loadingDiv">
+    <div class="loader"></div>
   </div>
 
   <h2 class="black-color" style="width:100%">Download <span class="gold-color">Qleedo</span></h2>
@@ -65,9 +91,12 @@
 {% block script %}
 <script>
   'use strict';
-  var div = document.getElementById('prayer');
-  (async () => {
-    let url = '{{ prayerUrl }}';
+  let prayer;
+  let prayerurl;
+  //var div = document.getElementById('prayer');
+  /*(async () => {
+    let url = '{{ detailsUrl }}';
+
     fetch(url)
       .then(function (response) {
         switch (response.status) {
@@ -96,7 +125,83 @@
         // "Not Found"
         console.log(response.statusText);
       });
+  })()*/
+
+  (async () => {
+    var loading = document.getElementById("loadingDiv");
+    var div = document.getElementById('prayer');
+
+    loading.style.display = "block";
+    div.style.display = "none";
+
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.toLocaleString('default', { month: 'long' });
+    const yyyy = today.getFullYear();
+    const hours = today.getHours();
+    const minutes = today.getMinutes();
+    const seconds = today.getSeconds();
+    if (dd < 10) { dd = '0' + dd; }
+    const cur_time = dd + ' ' + mm + ' ' + yyyy + ' ' + hours + ':' + minutes + ':' + seconds;
+
+    fetch('https://pg-app-cwmbz0wd7eqrjvx5cr32ftd4gsdp3j.scalabl.cloud/1/functions/getPrayers', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json', 'X-Parse-Application-Id': 'AcHG0EJiXqflSC7NbZ5PYtod4mSBfy7u0MqBjj0Z',
+        'X-Parse-REST-API-Key': 'Puqq9HpXVf0WUkBbHXNX8hwybv88xejYepluuUap'
+      },
+      body: JSON.stringify({
+        'prayerType': 'C', 'translation': 'O', 'currentDate': cur_time,
+        'versification': 'P', 'form': 'R', 'season': 'S', 'language': 'en'
+      }),
+    })
+      .then(response => response.json())
+      .then(response => {
+        const results = response.result;
+        const resultPrayer = JSON.parse(results);
+
+        prayer = resultPrayer.result[0]['Name'];
+        prayerurl = resultPrayer.result[0]['Prayer']['url'];
+
+        fetch(prayerurl)
+          .then(function (response) {
+            switch (response.status) {
+              // status "OK"
+              case 200:
+                return response.text();
+              // status "Not Found"
+              case 404:
+                throw response;
+            }
+          })
+          .then(function (template) {
+            var updatedTemplate = template.replace('img_prayer_footnote.png', '/static/images/img_prayer_footnote.png');
+            var newstring = updatedTemplate.replace('prayer_end.png', '/static/images/prayer_end.png');
+            var fontNeue = newstring.replace(/Helvetica Neue/g, "Kingthings Petrock");
+            var fontHelvetica = fontNeue.replace(/Helvetica/g, "Kingthings Petrock");
+            var fontArial = fontHelvetica.replace(/Arial/g, "Kingthings Petrock");
+            var fontFinal = fontArial.replace(/sans-serif/g, "Kingthings Petrock");
+            div.innerHTML += fontFinal
+            loading.style.display = "none";
+            div.style.display = "block";
+          })
+          .catch(function (response) {
+            // "Not Found"
+            console.log(response.statusText);
+          });
+
+
+      })
+      .catch(err => {
+        // Do something for an error here
+        prayer = 'May God Bless You';
+        prayerurl = '#';
+      });
   })()
+
+
+
+
   var onClicker = function (id) {
     $(id).slideToggle("slow", "swing");
   }
