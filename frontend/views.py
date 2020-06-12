@@ -193,9 +193,9 @@ def registration_view(request):
             print('...superusers_emails.22..', toEmail)
 
             # send email
-            html_content = '<html><body style="color:black;font-weight:700;font-size:20px " ><h2 style="font-weight:bold;">Hello,</h2>\n<h4 style="font-weight:400;">Following message was received from the MGSOSA website:</h2><h4 style="font-weight:400;">New user signup in the system, please verify the user and do the needful by visiting the admin portal</h4><a style="font-weight:200;" href="http://mgsosa-staging.mavapartners.com/admin">Admin Console</a> <br><h4 style="font-weight:200;">Name: ' + \
+            html_content = '<html><body style="color:black;font-weight:400;font-size:20px " ><h4 style="font-weight:400;">Hello,</h4>\n<h4 style="font-weight:400;" >Following message was received from the MGSOSA website:</h2><h4 style="font-weight:400;">New user signup in the system, please verify the user by visiting the admin portal.</h4><a style="font-weight:200;" href="http://mgsosa-staging.mavapartners.com/admin">Admin Portal</a> <br><h4 style="font-weight:200;">Name: ' + \
                 first_name + ' ' + last_name + '</h4><h4 style="font-weight:200;">Email: ' + useremail + \
-                '</h4><br> <br><h5 style="color:#7f5604">When we pray with a heart full of devotion, God accepts it and we receive it back in the form of a blessing!</h5><h5 style="color:#7f5604;text-align: center;">Powered by Team MAVA</h5></body></html>'
+                '</h4><br><h5 style="color:#7f5604">When we pray with a heart full of devotion, God accepts it and we receive it back in the form of a blessing!</h5><h5 style="color:#7f5604;text-align: center;">Powered by Team MAVA</h5></body></html>'
             try:
                 msg = EmailMultiAlternatives(
                     EMAIL_SUBJECT, '', TO_EMAIL, toEmail)
