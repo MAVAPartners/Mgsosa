@@ -9,10 +9,11 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
-from django.core.mail import BadHeaderError, send_mail
+from django.core.mail import BadHeaderError, EmailMultiAlternatives, send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
-from django.template import RequestContext
+from django.template import Context, RequestContext
+from django.template.loader import render_to_string
 
 from .forms import ContactForm, LoginForm, RegistrationForm
 
@@ -26,29 +27,6 @@ TO_EMAIL = 'contactus@mgsosa.com'
 
 
 def home(request):
-    """now = datetime.now()
-    cur_time = now.strftime("%d %B %Y %H:%M:%S")
-    url = 'https://pg-app-cwmbz0wd7eqrjvx5cr32ftd4gsdp3j.scalabl.cloud/1/functions/getPrayers'
-    header = {'Content-Type': 'application/json', 'X-Parse-Application-Id': 'AcHG0EJiXqflSC7NbZ5PYtod4mSBfy7u0MqBjj0Z',
-              'X-Parse-REST-API-Key': 'Puqq9HpXVf0WUkBbHXNX8hwybv88xejYepluuUap'}
-    myobj = {'prayerType': 'C', 'translation': 'O', 'currentDate': cur_time,
-             'versification': 'P', 'form': 'R', 'season': 'S', 'language': 'en'}
-    response = requests.post(url, json=myobj, headers=header)
-    data = response.content.decode('utf-8')
-    json_data = json.loads(data)
-    if json_data["result"] != '':
-        dict = json_data["result"]
-        json_data = json.loads(dict)
-        if json_data["status"] == 200:
-            results = json_data["result"]
-            prayer = results[0]['Name']
-            prayerurl = results[0]['Prayer']['url']
-        else:
-            prayer = 'May God Bless You'
-            prayerurl = '#'
-    else:
-        prayer = 'May God Bless You'
-        prayerurl = '#'"""
     return render(request, 'home-sample.html', {'prayer': '', 'prayerurl': ''})
 
 
@@ -125,27 +103,6 @@ def community(request):
 
 
 def dailyPrayer(request):
-    #url = request.GET.get('path')
-    """now = datetime.now()
-    cur_time = now.strftime("%d %B %Y %H:%M:%S")
-    url = 'https://pg-app-cwmbz0wd7eqrjvx5cr32ftd4gsdp3j.scalabl.cloud/1/functions/getPrayers'
-    header = {'Content-Type': 'application/json', 'X-Parse-Application-Id': 'AcHG0EJiXqflSC7NbZ5PYtod4mSBfy7u0MqBjj0Z',
-              'X-Parse-REST-API-Key': 'Puqq9HpXVf0WUkBbHXNX8hwybv88xejYepluuUap'}
-    myobj = {'prayerType': 'C', 'translation': 'O', 'currentDate': cur_time,
-             'versification': 'P', 'form': 'R', 'season': 'S', 'language': 'en'}
-    response = requests.post(url, json=myobj, headers=header)
-    data = response.content.decode('utf-8')
-    json_data = json.loads(data)
-    if json_data["result"] != '':
-        dict = json_data["result"]
-        json_data = json.loads(dict)
-        if json_data["status"] == 200:
-            results = json_data["result"]
-            prayerUrl = results[0]['Prayer']['url']
-        else:
-            prayerUrl = '#'
-    else:
-        prayerUrl = '#'"""
     return render(request, 'daily-prayer.html', {'detailsUrl': 'url'})
 
 
@@ -215,13 +172,13 @@ def registration_view(request):
         if form.is_valid():
             user = form.save()
             username = form.cleaned_data.get('username')
-            email = form.cleaned_data.get('email')
+            useremail = form.cleaned_data.get('email')
             password = form.cleaned_data.get('password1')
             password2 = form.cleaned_data.get('password2')
             first_name = form.cleaned_data.get('first_name')
             last_name = form.cleaned_data.get('last_name')
             user.is_active = True
-            user.email = email
+            user.email = useremail
             user.first_name = first_name
             user.last_name = last_name
             user.save()
@@ -229,11 +186,27 @@ def registration_view(request):
             #login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             superusers_emails = User.objects.filter(
                 is_superuser=True).values('email')
+            print('...superusers_emails...', superusers_emails)
             toEmail = []
             for email in superusers_emails:
                 toEmail.append(email['email'])
-            emailTemplate("Hello, \nFollowing message was received from the MGSOSA website: \n",
-                          "New user signup in the system, please verify user and do the needfull.", first_name+' '+last_name, 'contactus@mgsosa.com', '', toEmail)
+            print('...superusers_emails.22..', toEmail)
+
+            # send email
+            html_content = '<html><body style="color:black;font-weight:700;font-size:20px " ><h2 style="font-weight:bold;">Hello,</h2>\n<h4 style="font-weight:400;">Following message was received from the MGSOSA website:</h2><h4 style="font-weight:400;">New user signup in the system, please verify the user and do the needful by visiting the admin portal</h4><a style="font-weight:200;" href="http://mgsosa-staging.mavapartners.com/admin">Admin Console</a> <br><h4 style="font-weight:200;">Name: ' + \
+                first_name + ' ' + last_name + '</h4><h4 style="font-weight:200;">Email: ' + useremail + \
+                '</h4><br> <br><h5 style="color:#7f5604">When we pray with a heart full of devotion, God accepts it and we receive it back in the form of a blessing!</h5><h5 style="color:#7f5604;text-align: center;">Powered by Team MAVA</h5></body></html>'
+            try:
+                msg = EmailMultiAlternatives(
+                    EMAIL_SUBJECT, '', TO_EMAIL, toEmail)
+                msg.attach_alternative(html_content, "text/html")
+                msg.send()
+
+                print(useremail, toEmail)
+                #send_mail(EMAIL_SUBJECT, message_body,TO_EMAIL, toEmail)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+
             form = RegistrationForm()
             context['registration_form'] = form
             messages.success(
