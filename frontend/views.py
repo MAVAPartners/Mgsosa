@@ -168,7 +168,6 @@ def registration_view(request):
     context = {}
     if request.POST:
         form = RegistrationForm(request.POST)
-        print('....registration_view.......')
         if form.is_valid():
             user = form.save()
             username = form.cleaned_data.get('username')
@@ -186,31 +185,37 @@ def registration_view(request):
             #login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             superusers_emails = User.objects.filter(
                 is_superuser=True).values('email')
-            print('...superusers_emails...', superusers_emails)
             toEmail = []
             for email in superusers_emails:
-                toEmail.append(email['email'])
-            print('...superusers_emails.22..', toEmail)
+                adminEmail = email['email']
+                if adminEmail:
+                    toEmail.append(adminEmail)
 
             # send email
             html_content = '<html><body style="color:black;font-weight:400;font-size:20px " ><h4 style="font-weight:400;">Hello,</h4>\n<h4 style="font-weight:400;" >Following message was received from the MGSOSA website:</h2><h4 style="font-weight:400;">New user signup in the system, please verify the user by visiting the admin portal.</h4><a style="font-weight:200;" href="http://mgsosa-staging.mavapartners.com/admin">Admin Portal</a> <br><h4 style="font-weight:200;">Name: ' + \
                 first_name + ' ' + last_name + '</h4><h4 style="font-weight:200;">Email: ' + useremail + \
                 '</h4><br><h5 style="color:#7f5604">When we pray with a heart full of devotion, God accepts it and we receive it back in the form of a blessing!</h5><h5 style="color:#7f5604;text-align: center;">Powered by Team MAVA</h5></body></html>'
             try:
+                # to email for production is TO_EMAIL
+                # in staging toEmail
                 msg = EmailMultiAlternatives(
-                    EMAIL_SUBJECT, '', TO_EMAIL, toEmail)
+                    EMAIL_SUBJECT, '', TO_EMAIL, TO_EMAIL.split(","))
                 msg.attach_alternative(html_content, "text/html")
                 msg.send()
 
                 print(useremail, toEmail)
+                form = RegistrationForm()
+                context['registration_form'] = form
+                messages.success(
+                    request, 'User Signup successfully Please contact Administrator for approval')
                 #send_mail(EMAIL_SUBJECT, message_body,TO_EMAIL, toEmail)
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-
-            form = RegistrationForm()
-            context['registration_form'] = form
-            messages.success(
-                request, 'User Signup successfully Please contact Administrator for approval')
+            except Exception as e:
+                print('...superusers_emails.,,,,,,Exception.', e)
+                context['registration_form'] = form
+                messages.error(request, e)
+                return HttpResponse('Invalid header found.')
         else:
             context['registration_form'] = form
     else:
@@ -228,7 +233,6 @@ def login_user(request):
         #password = form.cleaned_data['password']
         username = request.POST['username']
         password = request.POST['password']
-        print(password+'..r...form AuthenticationForm....55... '+username)
 
         #
         #user = authenticate(username=username, password=password)
@@ -268,29 +272,3 @@ def logout_request(request):
     logout(request)
     messages.success(request, 'You are now successfully logged out')
     return HttpResponseRedirect('/login/')
-
-
-def emailTemplate(messageHeading, message, name, fromEmail, mobile, toEmails):
-    print('......email template......', message)
-    message_body = messageHeading
-    message_body = message_body + \
-        "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ \n"
-    message_body = message_body + "Name: " + name + '\n'
-    message_body = message_body + "Email: " + fromEmail + '\n'
-    message_body = message_body + "Phone: " + str(mobile) + '\n'
-    message_body = message_body + "Message: " + message + '\n'
-    message_body = message_body + \
-        "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n "
-    message_body = message_body + \
-        "When we pray with a heart full of devotion, God accepts it and we receive it back in the form of a blessing!\n\n"
-
-    message_body = message_body + "Powered by Team MAVA" + '\n'
-
-    print(name, fromEmail, mobile, message)
-
-    try:
-        send_mail(EMAIL_SUBJECT, message_body,
-                  fromEmail, toEmails)
-        # ,anoob.vm@mavapartners.com
-    except BadHeaderError:
-        return HttpResponse('Invalid header found.')
