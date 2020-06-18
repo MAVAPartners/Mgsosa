@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block style %}
+{% load static %}
+<link href="{% static 'css/contact.css' %}" rel="stylesheet">
+<style>
+    body {
+        background: url('{% static 'images/parchemnt_paper2.png' %}') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+
+    @font-face {
+        font-family: myFirstFont;
+        src: url('{% static 'fonts/kingthings-petrock/Kingthings Petrock.ttf' %}');
+    }
+    .li-style{
+        width: 20%
+    }
+    .input-style{
+        width: 80%;
+    }
+    .listul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333333;
+  width: 100%;
+}
+
+    li a {display: block;color: white;text-align: center;padding: 16px;text-decoration: none;}
+    li {float: left;}
+</style>
+{% endblock %}
+
+{% block banner %}
+{% load static %}
+{% endblock %}
+{% block content %}
+{% load static %}
+<div class="container animated fadeIn">
+    <div class="row">
+        <h1 class="header-title mt-3"> List Events </h1>
+        {% include 'includes/breadcrumb.html' %}
+        <hr>
+        <div style="margin-top: 20px;border: 4px solid #bfab87; padding: 10px 10px; width:100%" class="row col-sm-12">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <div class="row" style="width: 100%;margin: 10px 10px;">
+            {% for event in eventList %}
+            <ul class="listul">
+                <li class="li-style"><a href="#home">{{event.name}}</a></li>
+                <li class="li-style"><a href="#news">{{event.description}}</a></li>
+                <li class="li-style"><a href="#contact">{{event.fromDate}}</a></li>
+                <li class="li-style"><a href="#about">{{event.toDate}}</a></li>
+            </ul>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+  'use strict';
+  $("#ImageMedias").change(function () {
+	if (typeof (FileReader) != "undefined") {
+		var dvPreview = $("#divImageMediaPreview");
+		dvPreview.html("");            
+		$($(this)[0].files).each(function () {
+			var file = $(this);                
+				var reader = new FileReader();
+				reader.onload = function (e) {
+					var img = $("<img />");
+					img.attr("style", "width: 150px; height:100px; padding: 10px");
+					img.attr("src", e.target.result);
+					dvPreview.append(img);
+				}
+				reader.readAsDataURL(file[0]);                
+		});
+	} else {
+		alert("This browser does not support HTML5 FileReader.");
+	}
+});
+</script>
+{% endblock %}

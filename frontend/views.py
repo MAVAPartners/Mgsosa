@@ -1,7 +1,9 @@
 import json
+import os
 from datetime import datetime
 
 import requests
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import authenticate as auth_login
 from django.contrib.auth import login as login_default
@@ -9,13 +11,16 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
+from django.core.files.base import ContentFile
+from django.core.files.storage import FileSystemStorage, default_storage
 from django.core.mail import BadHeaderError, EmailMultiAlternatives, send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.template import Context, RequestContext
 from django.template.loader import render_to_string
 
-from .forms import ContactForm, LoginForm, RegistrationForm
+from .forms import ContactForm, EventForm, LoginForm, RegistrationForm
+from .models import Event, EventImage
 
 # Create your views here.
 
@@ -234,7 +239,6 @@ def login_user(request):
         username = request.POST['username']
         password = request.POST['password']
 
-        #
         #user = authenticate(username=username, password=password)
         # print(user)
         if form.is_valid():
@@ -272,3 +276,43 @@ def logout_request(request):
     logout(request)
     messages.success(request, 'You are now successfully logged out')
     return HttpResponseRedirect('/login/')
+
+
+def event_view(request):
+    context = {}
+    if request.POST:
+        print('.....event_view..POST...', request.FILES)
+        form = EventForm(request.POST, request.FILES)
+        if form.is_valid():
+            event_data = request.POST.dict()
+            print(form,'...event data...........', event_data)
+            event = Event()
+            event.name = event_data.get('name')
+            event.description = event_data.get('description')
+            event.fromDate = event_data.get('fromdate')
+            event.toDate = event_data.get('todate')
+            event.save()
+
+            uploadedFiles = request.FILES.getlist('imageMedias')
+            fs = FileSystemStorage()
+            for myfile in uploadedFiles:
+                print(myfile.file, '.....promary key........', myfile.name)
+                #uploaded_file_url = fs.url(filename)
+                path = default_storage.save(str(event.id)+'/'+myfile.name, ContentFile(myfile.file.read()))
+                #tmp_file = os.path.join(settings.MEDIA_ROOT, path)
+                eventimage = EventImage()
+                eventimage.eventId = event
+                eventimage.imageUrl = path
+                eventimage.save()
+                print(eventimage.imageUrl,'....image file....', eventimage.id)
+            messages.success(request, 'Event Added successfully')
+    else:
+        form = EventForm()
+        context['event_form'] = form
+    return render(request, 'event/addevent.html', context)
+
+def event_list(request):
+    context = {}
+    eventList = Event.objects.filter()
+    print('....event_list......', eventList)
+    return render(request, 'event/listevent.html', {'eventList' : eventList})
