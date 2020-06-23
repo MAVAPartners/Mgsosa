@@ -11,6 +11,7 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
+from django.core import serializers
 from django.core.files.base import ContentFile
 from django.core.files.storage import FileSystemStorage, default_storage
 from django.core.mail import BadHeaderError, EmailMultiAlternatives, send_mail
@@ -281,11 +282,9 @@ def logout_request(request):
 def event_view(request):
     context = {}
     if request.POST:
-        print('.....event_view..POST...', request.FILES)
         form = EventForm(request.POST, request.FILES)
         if form.is_valid():
             event_data = request.POST.dict()
-            print(form,'...event data...........', event_data)
             event = Event()
             event.name = event_data.get('name')
             event.description = event_data.get('description')
@@ -296,15 +295,12 @@ def event_view(request):
             uploadedFiles = request.FILES.getlist('imageMedias')
             fs = FileSystemStorage()
             for myfile in uploadedFiles:
-                print(myfile.file, '.....promary key........', myfile.name)
-                #uploaded_file_url = fs.url(filename)
                 path = default_storage.save(str(event.id)+'/'+myfile.name, ContentFile(myfile.file.read()))
                 #tmp_file = os.path.join(settings.MEDIA_ROOT, path)
                 eventimage = EventImage()
                 eventimage.eventId = event
                 eventimage.imageUrl = path
                 eventimage.save()
-                print(eventimage.imageUrl,'....image file....', eventimage.id)
             messages.success(request, 'Event Added successfully')
     else:
         form = EventForm()
@@ -314,5 +310,30 @@ def event_view(request):
 def event_list(request):
     context = {}
     eventList = Event.objects.filter()
-    print('....event_list......', eventList)
     return render(request, 'event/listevent.html', {'eventList' : eventList})
+
+def editevent_view(request, event_id):
+    context = {}
+    if request.POST:
+        form = EventForm(request.POST, request.FILES)
+        print(request.POST.dict(),'.....event_view..POST..form validity......', form.is_valid())
+        if form.is_valid():
+            event_data = request.POST.dict()
+            print(form,'...event data...inner...POST.....', event_data)
+        
+        responseData = {'eventID': event_id,}
+            
+    else:
+        form = EventForm()
+        context['event_form'] = form
+        eventID = int(event_id)
+        eventList = Event.objects.filter(id = eventID)
+        eventImages = EventImage.objects.filter(eventId = eventID)
+        #qs_json = serializers.serialize('json', eventList)
+        imageList = []
+        for image in eventImages:
+            print(image,'...selected image........',image.imageUrl)
+            imageList.append(image)
+        responseData = {'eventID': eventID,'description' : eventList[0].description, 'name' : eventList[0].name,  'fromDate' : eventList[0].fromDate , 'toDate' : eventList[0].toDate , 'imagelist' : serializers.serialize("json", imageList)}
+
+    return render(request, 'event/updateevent.html', responseData )

@@ -13,7 +13,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.conf.urls import url
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 from machina import urls as machina_urls
@@ -46,4 +48,7 @@ urlpatterns = [
     url(r'^sginout/$', views.logout_request, name='signout'),
     url(r'^addevent/$', views.event_view, name='addevent'),
     url(r'^listevent/$', views.event_list, name='listevent'),
+    url(r'^editevent/(?P<event_id>\d{1,18})/$', views.editevent_view, name='editevent'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

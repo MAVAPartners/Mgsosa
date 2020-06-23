@@ -57,10 +57,10 @@
             <div class="row" style="width: 100%;margin: 10px 10px;">
             {% for event in eventList %}
             <ul class="listul">
-                <li class="li-style"><a href="#home">{{event.name}}</a></li>
-                <li class="li-style"><a href="#news">{{event.description}}</a></li>
-                <li class="li-style"><a href="#contact">{{event.fromDate}}</a></li>
-                <li class="li-style"><a href="#about">{{event.toDate}}</a></li>
+                <li class="li-style"><a href="{% url 'editevent' event_id=event.id%}">{{event.name}}</a></li>
+                <li class="li-style"><a href="{% url 'editevent' event_id=event.id%}">{{event.description}}</a></li>
+                <li class="li-style"><a href="{% url 'editevent' event_id=event.id%}">{{event.fromDate}}</a></li>
+                <li class="li-style"><a href="{% url 'editevent' event_id=event.id%}">{{event.toDate}}</a></li>
             </ul>
             {% endfor %}
         </div>
