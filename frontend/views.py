@@ -107,29 +107,34 @@ def dailyPrayer(request):
 
 
 def home_sample(request):
-    now = datetime.now()
-    cur_time = now.strftime("%d %B %Y %H:%M:%S")
-    url = 'https://pg-app-cwmbz0wd7eqrjvx5cr32ftd4gsdp3j.scalabl.cloud/1/functions/getPrayers'
-    header = {'Content-Type': 'application/json', 'X-Parse-Application-Id': 'AcHG0EJiXqflSC7NbZ5PYtod4mSBfy7u0MqBjj0Z',
-              'X-Parse-REST-API-Key': 'Puqq9HpXVf0WUkBbHXNX8hwybv88xejYepluuUap'}
-    myobj = {'prayerType': 'C', 'translation': 'O', 'currentDate': cur_time,
-             'versification': 'P', 'form': 'R', 'season': 'S', 'language': 'en'}
-    response = requests.post(url, json=myobj, headers=header)
-    data = response.content.decode('utf-8')
-    json_data = json.loads(data)
-    if json_data["result"] != '':
-        dict = json_data["result"]
-        json_data = json.loads(dict)
-        if json_data["status"] == 200:
-            results = json_data["result"]
-            prayer = results[0]['Name']
-            prayerurl = results[0]['Prayer']['url']
+    try:
+        now = datetime.now()
+        cur_time = now.strftime("%d %B %Y %H:%M:%S")
+        url = 'https://pg-app-cwmbz0wd7eqrjvx5cr32ftd4gsdp3j.scalabl.cloud/1/functions/getPrayers'
+        header = {'Content-Type': 'application/json', 'X-Parse-Application-Id': 'AcHG0EJiXqflSC7NbZ5PYtod4mSBfy7u0MqBjj0Z',
+                'X-Parse-REST-API-Key': 'Puqq9HpXVf0WUkBbHXNX8hwybv88xejYepluuUap'}
+        myobj = {'prayerType': 'C', 'translation': 'O', 'currentDate': cur_time,
+                'versification': 'P', 'form': 'R', 'season': 'S', 'language': 'en'}
+        response = requests.post(url, json=myobj, headers=header)
+        data = response.content.decode('utf-8')
+        json_data = json.loads(data)
+        if json_data["result"] != '':
+            dict = json_data["result"]
+            json_data = json.loads(dict)
+            if json_data["status"] == 200:
+                results = json_data["result"]
+                prayer = results[0]['Name']
+                prayerurl = results[0]['Prayer']['url']
+            else:
+                prayer = 'May God Bless You'
+                prayerurl = '#'
         else:
             prayer = 'May God Bless You'
             prayerurl = '#'
-    else:
-        prayer = 'May God Bless You'
-        prayerurl = '#'
+    except Exception as e:
+            print(e)
+            prayer = 'May God Bless You'
+            prayerurl = '#'
     return render(request, 'home-sample.html', {'prayer': prayer, 'prayerurl': prayerurl})
 
 
@@ -207,7 +212,7 @@ def registration_view(request):
                 form = RegistrationForm()
                 context['registration_form'] = form
                 messages.success(
-                    request, 'User Signup successfully Please contact Administrator for approval')
+                    request, 'User signup successful. Please contact an Administrator for approval')
                 #send_mail(EMAIL_SUBJECT, message_body,TO_EMAIL, toEmail)
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
