@@ -44,4 +44,5 @@ urlpatterns = [
     url(r'^signup/$', views.registration_view, name = 'signup'),
     url(r'^login/$', views.login_user, name = 'login'),
     url(r'^sginout/$', views.logout_request, name = 'signout'),
+    url(r'^campaigns/$', views.campaigns, name = 'campaigns'),
 ]
