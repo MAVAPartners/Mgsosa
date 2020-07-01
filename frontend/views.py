@@ -277,3 +277,6 @@ def logout_request(request):
     logout(request)
     messages.success(request, 'You are now successfully logged out')
     return HttpResponseRedirect('/login/')
+
+def campaigns(request):
+    return render(request, 'campaigns.html')
