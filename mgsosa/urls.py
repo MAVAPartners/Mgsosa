@@ -49,6 +49,7 @@ urlpatterns = [
     url(r'^addevent/$', views.event_view, name='addevent'),
     url(r'^listevent/$', views.event_list, name='listevent'),
     url(r'^editevent/(?P<event_id>\d{1,18})/$', views.editevent_view, name='editevent'),
+    url(r'^campaigns/$', views.campaigns, name = 'campaigns'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
