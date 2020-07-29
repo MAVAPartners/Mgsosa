@@ -22,6 +22,7 @@ from django.template.loader import render_to_string
 
 from .forms import ContactForm, EventForm, LoginForm, RegistrationForm
 from .models import Event, EventImage
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -45,7 +46,15 @@ def events(request):
 
 
 def all_events(request):
-    return render(request, 'events-all.html')
+    data = Event.objects.all()
+    page = request.GET.get('page', 1)
+    paginator = Paginator(data, 4)
+    events = {
+        "events": paginator.page(page)
+    }
+    
+
+    return render(request, 'events-all.html', events)
 
 
 def donations(request):
