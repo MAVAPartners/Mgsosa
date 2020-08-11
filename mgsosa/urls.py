@@ -28,7 +28,7 @@ admin.site.site_header = "Administration"
 admin.site.site_title = "MGSOSA Admin"
 
 urlpatterns = [
-    url(r'^$', views.home_sample, name='home'),
+    url(r'^$', views.home, name='home'),
     url(r'^about/$', views.about, name='about'),
     url(r'^donations/$', views.donations, name='donations'),
     url(r'^events/$', views.events, name='pastEvents'),
@@ -38,8 +38,6 @@ urlpatterns = [
     url(r'^qleedo/$', views.qleedo, name='qleedo'),
     url(r'^community/$', views.community, name='community'),
     url(r'^daily-prayer/$', views.dailyPrayer, name='dailyPrayer'),
-    url(r'^sample/$', views.home_sample, name='sample'),
-    url(r'^sample2/$', views.home_sample_two, name='sample2'),
     url(r'^monitor/$', worker_view.check_server_status, name='monitor'),
     url(r"^admin/", admin.site.urls, name="admin"),
     path(r"forum/", include(machina_urls), name="forum"),

@@ -33,8 +33,8 @@ EMAIL_SUBJECT = 'From MGSOSA website'
 TO_EMAIL = 'contactus@mgsosa.com'
 
 
-def home(request):
-    return render(request, 'home-sample.html', {'prayer': '', 'prayerurl': ''})
+# def home(request):
+#     return render(request, 'home-sample.html', {'prayer': '', 'prayerurl': ''})
 
 
 def about(request):
@@ -48,7 +48,7 @@ def events(request):
 def all_events(request):
     data = Event.objects.all()
     page = request.GET.get('page', 1)
-    paginator = Paginator(data, 4)
+    paginator = Paginator(data, 5)
     events = {
         "events": paginator.page(page)
     }
@@ -121,7 +121,7 @@ def dailyPrayer(request):
     return render(request, 'daily-prayer.html', {'detailsUrl': 'url'})
 
 
-def home_sample(request):
+def home(request):
     try:
         now = datetime.now()
         cur_time = now.strftime("%d %B %Y %H:%M:%S")
@@ -150,7 +150,7 @@ def home_sample(request):
             print(e)
             prayer = 'May God Bless You'
             prayerurl = '#'
-    return render(request, 'home-sample.html', {'prayer': prayer, 'prayerurl': prayerurl})
+    return render(request, 'home.html', {'prayer': prayer, 'prayerurl': prayerurl})
 
 
 def home_sample_two(request):
