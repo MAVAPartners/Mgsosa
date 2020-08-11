@@ -47,7 +47,7 @@ h4 {
  color:#363940
 }
 a {
- color:#5867dd
+ color:#0bacd3
 }
 .no-padding {
  padding:0!important
@@ -157,8 +157,7 @@ a {
     background-size: cover;
     background-position: center center;
     color: #FFFFFF;
-    padding: 90px 90px
-    ;
+    padding: 23px 15px;
 }
 
 .col {
@@ -190,10 +189,13 @@ a {
 
 /* css for prayer section */
 .prayer-container {
-    border-color: red;
+    border-color: #7f5604;
     /* background-color: #f8d289; */
-    border: 1px solid red;
-    height:420px;
+    border: 1px solid #7f5604;
+    /* height:401px; */
+    margin-bottom: 15px;
+    min-height:656px;
+    border-radius:5px;
 }
 .black-color {
     color: #000;
@@ -227,7 +229,8 @@ a {
     float: left;
 }
 .tg-copyrights {
-    float: right;
+    /* float: right; */
+    text-align: center;
 }
 .col-xs-12 {
     width: 100%;
@@ -267,13 +270,40 @@ hr {
 }
 
 .site_link_color{
-    color:#fd9400 !important;
+    color:#0bacd3 !important;
 }
 .site_link_color:hover{
-    color:#fd9400 !important;
+    color:#0989a7 !important;
 }
 .site-container{
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 80vh;
   }
+
+  .footer-text {
+    text-align: center;
+    line-height: normal;
+    /* margin-bottom: 3rem; */
+}
+.social-icons .fa {
+    padding: 5px;
+    color: #333;
+    font-size: 1.7rem!important;
+}
+.contact-info a {
+    color: #666;
+    text-decoration: none;
+    text-align: center;
+}
+.footer-copyright p {
+    text-align: center;
+    font-size: .8rem;
+    line-height: normal;
+}
+
+.btn-events-primary {
+    color: #fff;
+    background-color: #0bacd3;
+    border-color: #0bacd3;
+}

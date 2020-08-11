@@ -1,0 +1,111 @@
+.gallery-area {
+    position: relative;
+}
+.gallery-area .single-item-area .img-box-area {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #e5e5e5;
+    padding: 8px;
+}
+.gallery-area .single-item-area .img-box-area img {
+    position: relative;
+    width: 100%;
+}
+.single-item-area .img-box-area .overlay .box .content a i {
+    border: 2px solid #fff;
+    text-align: center;
+    color: #0bacd3;
+    display: inline-block;
+    font-size: 15px;
+    height: 55px;
+    line-height: 53px;
+    transition: all 500ms ease 0s;
+    width: 55px;
+    margin-bottom: 15px;
+    border-radius: 0;
+}
+.single-item-area:hover .img-box-area .overlay {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+.overlay .box .content {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+.overlay {
+    width: 96%;
+    height: 96%;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    background: rgba(21, 34, 63, 0.75);
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+.overlay .box {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+.gallery-area h5 {
+    color: #fff;
+}
+.gallery-area .owl-dots {
+    display: none !important;
+}
+.gallery-area .owl-theme .owl-controls {
+    display: block;
+    position: relative;
+    margin-top:10px;
+    text-align: center;
+}
+.gallery-area .owl-prev span, .gallery-area .owl-next span {
+    color: #848484;
+}
+.gallery-area .owl-prev:hover span, .gallery-area .owl-next:hover span {
+    color: #fff;
+    transition: all 500ms ease;
+}
+.section-padding {
+    padding: 80px 0px 80px 0px;
+}
+.centered {
+    text-align: center;
+}
+.section-title h2 {
+    position: relative;
+    font-weight: 700;
+    font-size:40px;
+    margin-bottom: 2px;
+}
+.title-text {
+    position: relative;
+    margin-bottom: 68px;
+}
+.title-text p {
+    font-size: 16px;
+    max-width: 650px;
+    color: #444;
+    margin:0 auto;
+}
+.title-text:before {
+    position: absolute;
+    content: '';
+    height: 5px;
+    border-bottom: 3px double #0bacd3;
+    width: 100px;
+    border-radius: 0px;
+    left: 0;
+    right: 0px;
+    margin: auto;
+    bottom: -18px;
+}
+ @media (min-width:1200px) {
+.container {
+    padding: 0px 0px;
+}
+}

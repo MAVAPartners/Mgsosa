@@ -200,88 +200,29 @@
         </div> {% endcomment %}
         {% comment %} code for all events {% endcomment %}
         <div class="row row-cols-1 row-cols-md-2">
-  <div class="col mb-4  mr-3">
-    <!-- Card -->
-    <div class="card">
-
-      <!--Card image-->
-      <div class="view overlay">
-        <img class="card-img-top" src="{% static 'images/cons_tile.png' %}"
-          alt="Card image cap">
-        <a href="#!">
-          <div class="mask rgba-white-slight"></div>
-        </a>
-      </div>
-
-      <!--Card content-->
-      <div class="card-body">
-
-        <!--Title-->
-        <h4 class="card-title">Card title</h4>
-        <!--Text-->
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-          card's content.</p>
-        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-        <button type="button" class="btn btn-light-blue btn-md">Read more</button>
-
-      </div>
-
-    </div>
-    <!-- Card -->
-  </div>
-  <div class="col mb-4">
-    <!-- Card -->
-    <div class="card">
-
-      <!--Card image-->
-      <div class="view overlay">
-        <img class="card-img-top" src="{% static 'images/Game_tile.png' %}"
-          alt="Card image cap">
-        <a href="#!">
-          <div class="mask rgba-white-slight"></div>
-        </a>
-      </div>
-
-      <!--Card content-->
-      <div class="card-body">
-
-        <!--Title-->
-        <h4 class="card-title">Card title</h4>
-        <!--Text-->
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-          card's content.</p>
-        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-        <button type="button" class="btn btn-light-blue btn-md">Read more</button>
-
-      </div>
-
-    </div>
-    <!-- Card -->
-  </div>
   
-</div>
-<div class="row row-cols-1 row-cols-md-2">
-<div class="col mb-4 mr-3">
+  {% for event in events %}
+  <div class="col-sm-3 mb-4  mr-3">
     <!-- Card -->
     <div class="card">
 
       <!--Card image-->
       <div class="view overlay">
-        <img class="card-img-top" src="{% static 'images/Tshirt_tiles.png' %}"
+        <img class="card-img-top" src="{{ event.image.url }}"
           alt="Card image cap">
         <a href="#!">
           <div class="mask rgba-white-slight"></div>
         </a>
       </div>
-
+  
+  
       <!--Card content-->
       <div class="card-body">
 
         <!--Title-->
-        <h4 class="card-title">Card title</h4>
+        <h4 class="card-title">{{ event.name }}</h4>
         <!--Text-->
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-          card's content.</p>
+        <p class="card-text">{{ event.description }}</p>
         <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
         <button type="button" class="btn btn-light-blue btn-md">Read more</button>
 
@@ -289,39 +230,36 @@
 
     </div>
     <!-- Card -->
+       </div>
+
+  
+  {% endfor %}
   </div>
-  <div class="col mb-4">
-    <!-- Card -->
-    <div class="card">
-
-      <!--Card image-->
-      <div class="view overlay">
-        <img class="card-img-top" src="{% static 'images/restaurant_Tile.png' %}"
-          alt="Card image cap">
-        <a href="#!">
-          <div class="mask rgba-white-slight"></div>
-        </a>
-      </div>
-
-      <!--Card content-->
-      <div class="card-body">
-
-        <!--Title-->
-        <h4 class="card-title">Card title</h4>
-        <!--Text-->
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-          card's content.</p>
-        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-        <button type="button" class="btn btn-light-blue btn-md">Read more</button>
-
-      </div>
-
-    </div>
-    <!-- Card -->
-  </div>
-</div>
+  <div class="row col-12 row-cols-1 row-cols-md-2 justify-content-center">
 {% comment %} pagination code {% endcomment %}
-<nav aria-label="Page navigation example" class="col-sm-12 d-flex justify-content-center">
+{% if events.has_other_pages %}
+  <ul class="pagination justify-content-center">
+    {% if events.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page={{ events.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled page-item"><a class="page-link">&laquo;</a></li>
+    {% endif %}
+    {% for i in events.paginator.page_range %}
+      {% if events.number == i %}
+        <li class="active page-item"><a class="page-link">{{ i }} <span class="sr-only">(current)</span></a></li>
+      {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if events.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{ events.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled page-item"><a class="page-link">&raquo;</a></li>
+    {% endif %}
+  </ul>
+{% endif %}
+</div>
+{% comment %} <nav aria-label="Page navigation example" class="col-sm-12 d-flex justify-content-center">
   <ul class="pagination justify-content-center">
     <li class="page-item disabled">
       <a class="page-link" href="#" tabindex="-1">Previous</a>
@@ -333,7 +271,7 @@
       <a class="page-link" href="#">Next</a>
     </li>
   </ul>
-</nav>
+</nav> {% endcomment %}
 {% comment %} pagination code neds here {% endcomment %}
         {% comment %} code for ell events ends {% endcomment %}
     </div>

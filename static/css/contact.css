@@ -20,33 +20,40 @@
     .form-control
     {
         border-radius:0px;
-        border:1px solid #EDEDED;
+        border:1px solid #d2a560;
     }
 
-    .form-control:focus
-    {
-        border:1px solid #00bfff;
+    .form-control:focus {
+        color: #495057;
+        background-color: #fff;
+        border:1px solid #ac731c;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgb(242, 223, 181);
     }
+
 
     .textarea-contact
     {
         resize:none;
     }
 
-    .btn-send
-    {
+    .btn-send {
         border-radius: 0px;
-        border:1px solid #00bfff;
-        background:#00bfff;
-        color:#fff;
+        border: 1px solid #098aa9;
+        background: #0bacd3;
+        color: #fff;
+        width:30% !important;
+        padding:10px;
     }
 
     .btn-send:hover
     {
-        border:1px solid #00bfff;
-        background:#fff;
-        color:#00bfff;
+        border:1px solid #098aa9;
+        background:#0bacd3;
+        color:#000;
         transition:background 0.5s;
+        width:30% !important;
+        padding:10px;
     }
 
     .second-portion
@@ -94,4 +101,6 @@
       color: rgb(250, 76, 76);
       font: italic;
     }
+
+
 /* Conatct end */

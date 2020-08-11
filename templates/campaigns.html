@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block style %}
+{% load static %}
+<link href="{% static 'css/contact.css' %}" rel="stylesheet">
+<style>
+    body {
+        background: url('{% static 'images/parchemnt_paper2.png' %}') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+
+    @font-face {
+        font-family: myFirstFont;
+        src: url('{% static 'fonts/kingthings-petrock/Kingthings Petrock.ttf' %}');
+    }
+
+    .btn-sky {
+        color: #fff;
+        background-color: #0bacd3;
+        border-bottom: 2px solid #098aa9;
+    }
+
+    .button-alignment {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .margin-button {
+        margin-left: 15px;
+    }
+</style>
+{% endblock %}
+
+{% block banner %}
+{% load static %}
+{% endblock %}
+{% block content %}
+{% load static %}
+
+<div class="container animated fadeIn">
+    <div class="row">
+        <h1 class="header-title mt-3" style="text-align:left;font-family: Kingthings Petrock;"> Campaigns </h1>
+        {% include 'includes/breadcrumb.html' %}
+        <hr>
+        <div class="col-sm-12" id="parent">
+            <div class="row justify-content-center" >
+                <p style="text-align:center;font-family: Kingthings Petrock;" ></p>
+                <div class="col-md-7">
+              <a href="https://tinyurl.com/MGSOSATownHall-7-3-2020" target="blank">
+                <img class="img-fluid rounded mb-3 mb-md-0" src="{% static 'images/TOWNHALL_V1_Grey.png' %}" alt="">
+              </a>
+            </div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+    
+
+</div>
+<!--layout for 2 images ends-->
+{% endblock %}

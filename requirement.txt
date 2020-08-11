@@ -1,0 +1,7 @@
+Django
+django-haystack
+django-machina
+django-mptt
+django-widget-tweaks
+requests
+mysqlclient
