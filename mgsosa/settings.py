@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'machina.apps.forum_tracking',
     'machina.apps.forum_member',
     'machina.apps.forum_permission',
+    'frontend',
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -85,7 +86,6 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-
             os.path.join(BASE_DIR, 'templates_admin'),
             os.path.join(BASE_DIR, 'templates_forum'),
             os.path.join(BASE_DIR, 'templates'),
@@ -211,6 +211,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+
+
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
@@ -222,3 +229,9 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+
+
+FILE_UPLOAD_HANDLERS = [
+    'django.core.files.uploadhandler.MemoryFileUploadHandler',
+    'django.core.files.uploadhandler.TemporaryFileUploadHandler',
+]

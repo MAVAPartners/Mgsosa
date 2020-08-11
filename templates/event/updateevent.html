@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block style %}
+{% load static %}
+<link href="{% static 'css/contact.css' %}" rel="stylesheet">
+<style>
+    body {
+        background: url('{% static 'images/parchemnt_paper2.png' %}') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+
+    @font-face {
+        font-family: myFirstFont;
+        src: url('{% static 'fonts/kingthings-petrock/Kingthings Petrock.ttf' %}');
+    }
+
+    .input-style{
+        width: 80%;
+    }
+</style>
+{% endblock %}
+{% block banner %}
+{% load static %}
+{% endblock %}
+{% block content %}
+{% load static %}
+<div class="container animated fadeIn">
+    <div class="row">
+        <h1 class="header-title mt-3"> Update Event </h1>
+        {% include 'includes/breadcrumb.html' %}
+        <hr>
+        <form class="col-sm-12" action={% url 'editevent' event_id=eventID %} method="post" enctype="multipart/form-data">{% csrf_token %}
+        <div style="margin-top: 20px;border: 4px solid #bfab87; padding: 10px 10px; width:100%" class="row col-sm-12">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <div class="row" style="width: 100%;margin: 10px 10px;">
+            <div class="col-sm-6">
+                    <div class="form-group">
+                        <input class="input-style" type="text" id="name" name="name" placeholder="Name" />
+                    </div>
+                    <div class="form-group">
+                        <input class="input-style" placeholder="Event From" class="textbox-n" type="text" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" id="fromdate" name="fromdate" />
+                    </div>
+            </div>
+            <div class="col-sm-6" style="padding-left: 10px; padding-right: 10px;">
+                <div class="form-group">
+                    <input class="input-style" type="text" id="description" name="description" placeholder="Description" />
+                </div>
+                <div class="form-group">
+                    <input class="input-style" placeholder="Event To" class="textbox-n" type="text" onfocus="(this.type='datetime-local')" onblur="(this.type='text')" id="todate" name="todate"/>
+                </div>
+            </div>
+            </div>
+            <div class="col-sm-12">
+                <div  class="form-group">
+                    <input id="ImageMedias" multiple="multiple" name="imageMedias" type="file" accept=".jfif,.jpg,.jpeg,.png,.gif" >
+                </div>
+                <h4>Live Preview Thumbnail Image</h4>
+                <div style="overflow-y:scroll;height: auto;" id="divImageMediaPreview"></div>
+            </div>
+            <div class="col-sm-12">
+                <button style="margin-top: 25px;" type="submit">Update Event</button>
+            </div>
+        </div>
+    </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+
+
+<script>
+  var imagelist = JSON.stringify({{imagelist|safe}})
+  images = JSON.parse(imagelist);
+  'use strict';
+  let name = '{{ name }}';
+  let description = '{{ description }}';
+  let fromDate = '{{ fromDate }}';
+  let toDate = '{{ toDate }}';
+  let ID = '{{ eventID }}';
+  
+
+
+    console.log(JSON.stringify(imagelist)+'....update event......88..'+imagelist.length+'...99..'+name)
+    var dvPreview = $("#divImageMediaPreview");
+    document.getElementById("name").value = name;
+    document.getElementById("description").value = description;
+    document.getElementById("fromdate").value = fromDate;
+    document.getElementById("todate").value = toDate;
+    var element;
+    images.forEach(element => {
+        console.log(element.fields+'......image object......'+JSON.stringify(element)+'.....'+element.fields)
+        var img = $("<img />");
+					img.attr("style", "width: 150px; height:100px; padding: 10px");
+					img.attr("src", '/media/'+element.fields.imageUrl);
+					dvPreview.append(img);
+    });
+        
+    
+
+  $("#ImageMedias").change(function () {
+	if (typeof (FileReader) != "undefined") {
+		var dvPreview = $("#divImageMediaPreview");
+		dvPreview.html("");            
+		$($(this)[0].files).each(function () {
+			var file = $(this);                
+				var reader = new FileReader();
+				reader.onload = function (e) {
+					var img = $("<img />");
+					img.attr("style", "width: 150px; height:100px; padding: 10px");
+					img.attr("src", e.target.result);
+					dvPreview.append(img);
+				}
+				reader.readAsDataURL(file[0]);                
+		});
+	} else {
+		alert("This browser does not support HTML5 FileReader.");
+	}
+});
+</script>
+{% endblock %}

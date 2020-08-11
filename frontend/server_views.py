@@ -1,9 +1,7 @@
 import json
-import os
 from datetime import datetime
 
 import requests
-from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import authenticate as auth_login
 from django.contrib.auth import login as login_default
@@ -11,18 +9,13 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
-from django.core import serializers
-from django.core.files.base import ContentFile
-from django.core.files.storage import FileSystemStorage, default_storage
 from django.core.mail import BadHeaderError, EmailMultiAlternatives, send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.template import Context, RequestContext
 from django.template.loader import render_to_string
 
-from .forms import ContactForm, EventForm, LoginForm, RegistrationForm
-from .models import Event, EventImage
-from django.core.paginator import Paginator
+from .forms import ContactForm, LoginForm, RegistrationForm
 
 # Create your views here.
 
@@ -33,8 +26,8 @@ EMAIL_SUBJECT = 'From MGSOSA website'
 TO_EMAIL = 'contactus@mgsosa.com'
 
 
-# def home(request):
-#     return render(request, 'home-sample.html', {'prayer': '', 'prayerurl': ''})
+def home(request):
+    return render(request, 'home-sample.html', {'prayer': '', 'prayerurl': ''})
 
 
 def about(request):
@@ -46,15 +39,7 @@ def events(request):
 
 
 def all_events(request):
-    data = Event.objects.all()
-    page = request.GET.get('page', 1)
-    paginator = Paginator(data, 5)
-    events = {
-        "events": paginator.page(page)
-    }
-    
-
-    return render(request, 'events-all.html', events)
+    return render(request, 'events-all.html')
 
 
 def donations(request):
@@ -121,7 +106,7 @@ def dailyPrayer(request):
     return render(request, 'daily-prayer.html', {'detailsUrl': 'url'})
 
 
-def home(request):
+def home_sample(request):
     try:
         now = datetime.now()
         cur_time = now.strftime("%d %B %Y %H:%M:%S")
@@ -150,7 +135,7 @@ def home(request):
             print(e)
             prayer = 'May God Bless You'
             prayerurl = '#'
-    return render(request, 'home.html', {'prayer': prayer, 'prayerurl': prayerurl})
+    return render(request, 'home-sample.html', {'prayer': prayer, 'prayerurl': prayerurl})
 
 
 def home_sample_two(request):
@@ -227,7 +212,7 @@ def registration_view(request):
                 form = RegistrationForm()
                 context['registration_form'] = form
                 messages.success(
-                    request, 'User signup successful. Please contact an Administrator for approval')
+                    request, 'User Signup successfully Please contact Administrator for approval')
                 #send_mail(EMAIL_SUBJECT, message_body,TO_EMAIL, toEmail)
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
@@ -254,6 +239,7 @@ def login_user(request):
         username = request.POST['username']
         password = request.POST['password']
 
+        #
         #user = authenticate(username=username, password=password)
         # print(user)
         if form.is_valid():
@@ -291,66 +277,3 @@ def logout_request(request):
     logout(request)
     messages.success(request, 'You are now successfully logged out')
     return HttpResponseRedirect('/login/')
-
-
-def event_view(request):
-    context = {}
-    if request.POST:
-        form = EventForm(request.POST, request.FILES)
-        if form.is_valid():
-            event_data = request.POST.dict()
-            event = Event()
-            event.name = event_data.get('name')
-            event.description = event_data.get('description')
-            event.fromDate = event_data.get('fromdate')
-            event.toDate = event_data.get('todate')
-            event.save()
-
-            uploadedFiles = request.FILES.getlist('imageMedias')
-            fs = FileSystemStorage()
-            for myfile in uploadedFiles:
-                path = default_storage.save(str(event.id)+'/'+myfile.name, ContentFile(myfile.file.read()))
-                #tmp_file = os.path.join(settings.MEDIA_ROOT, path)
-                eventimage = EventImage()
-                eventimage.eventId = event
-                eventimage.imageUrl = path
-                eventimage.save()
-            messages.success(request, 'Event Added successfully')
-    else:
-        form = EventForm()
-        context['event_form'] = form
-    return render(request, 'event/addevent.html', context)
-
-def event_list(request):
-    context = {}
-    eventList = Event.objects.filter()
-    return render(request, 'event/listevent.html', {'eventList' : eventList})
-
-def editevent_view(request, event_id):
-    context = {}
-    if request.POST:
-        form = EventForm(request.POST, request.FILES)
-        print(request.POST.dict(),'.....event_view..POST..form validity......', form.is_valid())
-        if form.is_valid():
-            event_data = request.POST.dict()
-            print(form,'...event data...inner...POST.....', event_data)
-        
-        responseData = {'eventID': event_id,}
-            
-    else:
-        form = EventForm()
-        context['event_form'] = form
-        eventID = int(event_id)
-        eventList = Event.objects.filter(id = eventID)
-        eventImages = EventImage.objects.filter(eventId = eventID)
-        #qs_json = serializers.serialize('json', eventList)
-        imageList = []
-        for image in eventImages:
-            print(image,'...selected image........',image.imageUrl)
-            imageList.append(image)
-        responseData = {'eventID': eventID,'description' : eventList[0].description, 'name' : eventList[0].name,  'fromDate' : eventList[0].fromDate , 'toDate' : eventList[0].toDate , 'imagelist' : serializers.serialize("json", imageList)}
-
-    return render(request, 'event/updateevent.html', responseData )
-    
-def campaigns(request):
-    return render(request, 'campaigns.html')
