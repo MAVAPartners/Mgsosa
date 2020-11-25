@@ -31,6 +31,21 @@
     .margin-button {
         margin-left: 15px;
     }
+
+    .iframe-container{
+  position: relative;
+  width: 80%;
+  margin: auto;
+  padding-bottom: 56.25%; 
+  height: 0;
+}
+.iframe-container iframe{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 </style>
 {% endblock %}
 
@@ -78,6 +93,11 @@
         
         <hr>
         <div class="col-sm-12" id="parent">
+            <h5 class="header-title mt-3 content-p" style="font-family: Kingthings Petrock;line-height:35px;">
+                A virtual Townhall to address issues of race and social justice in America hosted on July 3rd, 2020</h5>    
+            <div class="iframe-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/OEgcsOBz-tI?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
             <div class="col-sm-12" style="float:left;padding-left:5px">
                 <p style="text-align:center;font-family: Kingthings Petrock;" class="content-p">
                 <h5 class="header-title mt-3 content-p" style="font-family: Kingthings Petrock;line-height:35px;">
