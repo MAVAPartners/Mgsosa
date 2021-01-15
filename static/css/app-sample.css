@@ -157,7 +157,7 @@ a {
     background-size: cover;
     background-position: center center;
     color: #FFFFFF;
-    padding: 90px 15px;
+    padding: 23px 15px;
 }
 
 .col {
@@ -192,7 +192,10 @@ a {
     border-color: #7f5604;
     /* background-color: #f8d289; */
     border: 1px solid #7f5604;
-    height:401px;
+    /* height:401px; */
+    margin-bottom: 15px;
+    min-height:656px;
+    border-radius:5px;
 }
 .black-color {
     color: #000;
@@ -226,7 +229,8 @@ a {
     float: left;
 }
 .tg-copyrights {
-    float: right;
+    /* float: right; */
+    text-align: center;
 }
 .col-xs-12 {
     width: 100%;
@@ -266,15 +270,15 @@ hr {
 }
 
 .site_link_color{
-    color:#fd9400 !important;
+    color:#0bacd3 !important;
 }
 .site_link_color:hover{
-    color:#fd9400 !important;
+    color:#0989a7 !important;
 }
 .site-container{
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 80vh;
   }
 
   .footer-text {

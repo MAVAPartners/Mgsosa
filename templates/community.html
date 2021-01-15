@@ -16,13 +16,41 @@
         font-family: myFirstFont;
         src: url('{% static 'fonts/kingthings-petrock/Kingthings Petrock.ttf' %}');
     }
+
+    .btn-sky {
+        color: #fff;
+        background-color: #0bacd3;
+        border-bottom: 2px solid #098aa9;
+    }
+
+    .button-alignment {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .margin-button {
+        margin-left: 15px;
+    }
+
+    .iframe-container{
+  position: relative;
+  width: 80%;
+  margin: auto;
+  padding-bottom: 56.25%; 
+  height: 0;
+}
+.iframe-container iframe{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 </style>
 {% endblock %}
 
 {% block banner %}
 {% load static %}
-{% comment %} <img src="{% static 'images/new_red_banner.png' %}" class="img-fluid" height="400" alt="Responsive image">
-{% endcomment %}
 {% endblock %}
 {% block content %}
 {% load static %}
@@ -35,25 +63,54 @@
         <div class="col-sm-12" id="parent">
             <div class="col-sm-12" style="float:left;padding-left:5px">
                 <p style="text-align:center;font-family: Kingthings Petrock;" class="content-p">
-                <h5 class="header-title mt-3" style="text-align:left;font-family: Kingthings Petrock;">Welcome to our
-                    community.  This is a place we can meet and discuss things like events, meets up, study groups, or
-                    even charitable cause for the organization.  Join us and become part of the online community today.
-                    <a href="mailto:mava.partnersin@gmail.com">Admin Email</a>
-                    <br>
-                    <a href="{% url 'signup' %}">Create user</a>
-                    <br>
-                    <a href="{% url 'signin' %}">Login</a>
+                <h5 class="header-title mt-3 content-p" style="font-family: Kingthings Petrock;line-height:35px;">
+                    Welcome to the MGSOSA Community! Meet with others to discuss events, meets up, study groups, or even
+                    charitable causes around the Archdiocese. Spread awareness of local events with the others around
+                    the Archdiocese. Engage in discussions with fellow peers. Whatever you would like to share, you can
+                    do so with the MGSOSA forum feature. Join us and become part of the online community today.
+                     <br>
+                    <div class="button-alignment">
+                        {% if request.user.is_authenticated %}
+                        <a class="margin-button"
+                            href="{% if request.user.is_authenticated %} {% url 'forum:index' %} {% else %} {% url 'admin:index' %}{% endif %}"><button
+                                type="button" class="btn btn-sky text-uppercase btn-lg">MGSOSA Forum</button></a>
+                        {% else %}
+                        <a class="margin-button" href="{% url 'signup' %}"><button type="button"
+                                class="btn btn-sky text-uppercase btn-lg">Join
+                                Now</button></a>
+                        <a class="margin-button" href="{% url 'login' %}"><button type="button"
+                                class="btn btn-sky text-uppercase btn-lg">Login</button></a>
+                        {% endif %}
+                    </div>
                 </h5>
 
                 </p>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <h1 class="header-title mt-3" style="text-align:left;font-family: Kingthings Petrock;"> Campaign </h1>
+        
+        <hr>
+        <div class="col-sm-12" id="parent">
+            <h5 class="header-title mt-3 content-p" style="font-family: Kingthings Petrock;line-height:35px;">
+                A virtual Townhall to address issues of race and social justice in America hosted on July 3rd, 2020</h5>    
+            <div class="iframe-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/OEgcsOBz-tI?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
             <div class="col-sm-12" style="float:left;padding-left:5px">
-                <a style="text-align:left;font-family: Kingthings Petrock;" class="">
-                    <h2 class="header-title mt-3" style="text-align:left;font-family: Kingthings Petrock;"><a
-                            href="{% if request.user.is_authenticated %} {% url 'forum:index' %} {% else %} {% url 'admin:index' %}{% endif %}">MGSOSA
-                            Forum</a>
-                    </h2>
-                </a>
+                <p style="text-align:center;font-family: Kingthings Petrock;" class="content-p">
+                <h5 class="header-title mt-3 content-p" style="font-family: Kingthings Petrock;line-height:35px;">
+                    Come join one of our campaigns here at MGSOSA.  We are always looking for positive ways to help the community and supporting one of our campaigns is a great way to help out your neighbors<br>
+                    <div class="button-alignment">
+                        <a class="margin-button"
+                            href="{% url 'campaigns' %}"><button
+                                type="button" class="btn btn-sky text-uppercase btn-lg">Campaigns</button></a>
+                        
+                    </div>
+                </h5>
+
+                </p>
             </div>
         </div>
     </div>

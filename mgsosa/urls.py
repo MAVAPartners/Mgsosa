@@ -29,7 +29,7 @@ urlpatterns = [
     url(r'^$', views.home_sample, name='home'),
     url(r'^about/$', views.about, name='about'),
     url(r'^donations/$', views.donations, name='donations'),
-    url(r'^events/$', views.events, name='events'),
+    url(r'^events/$', views.events, name='pastEvents'),
     url(r'^event-details/$', views.event_details, name='eventDetails'),
     url(r'^events-all/$', views.all_events, name='allEvents'),
     url(r'^contact/$', views.contact, name='contact'),
@@ -42,6 +42,7 @@ urlpatterns = [
     url(r"^admin/", admin.site.urls, name="admin"),
     path(r"forum/", include(machina_urls), name = "forum"),
     url(r'^signup/$', views.registration_view, name = 'signup'),
-    url(r'^signin/$', views.login_user, name = 'signin'),
+    url(r'^login/$', views.login_user, name = 'login'),
     url(r'^sginout/$', views.logout_request, name = 'signout'),
+    url(r'^campaigns/$', views.campaigns, name = 'campaigns'),
 ]

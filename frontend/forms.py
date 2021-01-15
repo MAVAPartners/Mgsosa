@@ -14,8 +14,8 @@ class ContactForm(forms.Form):
 	email = forms.EmailField(required=True, max_length=254,
         widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}))
 
-	mobile = forms.IntegerField(required=True,
-        widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Phone number'}),
+	mobile = forms.CharField(required=True,
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Phone number', 'data-mask':'(999) 999-9999'}),
         help_text='Write here your message!')
 
 	message = forms.CharField(required=True,max_length=500,

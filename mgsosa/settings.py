@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '+cdmd0fk($yd$e(c&ic(o7!e65fe^6lqza)co4x51$k^#+m72!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -60,11 +60,11 @@ INSTALLED_APPS = [
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp.mailgun.org'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'mava.monitor@gmail.com'
-EMAIL_HOST_PASSWORD = 'Mavabc@1234'
+EMAIL_HOST_USER = 'postmaster@sandbox0bccbd4b04a24fbc87649810bb915add.mailgun.org'
+EMAIL_HOST_PASSWORD = '21462884f771c2206e27c4aab20ecde5-a2b91229-2b7826fd'
 EMAIL_USE_SSL = False
 
 MIDDLEWARE = [
@@ -85,7 +85,6 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-
             os.path.join(BASE_DIR, 'templates_admin'),
             os.path.join(BASE_DIR, 'templates_forum'),
             os.path.join(BASE_DIR, 'templates'),
@@ -111,7 +110,7 @@ WSGI_APPLICATION = 'mgsosa.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -126,12 +125,14 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mgsosa',
         'USER': 'mgsosa',
-        'PASSWORD': 'Mava@12345',
-        'HOST' : 'localhost',
-        'PORT' : '3306'
+        'PASSWORD': 'Mava@12345',  # live DB
+        # 'PASSWORD': 'Mgsosa@12345', #staging DB
+        'HOST': 'localhost',
+        'PORT': '3306'
     }
 }
-'''
+
+
 # Local Postgre sql server connection details
 '''
 DATABASES = {
@@ -140,8 +141,8 @@ DATABASES = {
         'NAME': 'mbc_mgsosa',
         'USER': 'mbcdb',
         'PASSWORD': '',
-        'HOST' : 'localhost',
-        'PORT' : '5432'
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
 '''
