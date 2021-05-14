@@ -23,7 +23,7 @@
     </div>
     <div>&nbsp;</div>
     <div class="footer-copyright container">
-      <p style="margin-bottom:4px !important">© 2020&nbsp;Mor Gregorios Syriac Orthodox Student Association.<br>
+      <p style="margin-bottom:4px !important" id="mgsosaid"><br>
         <a href="{% url 'home' %}" style="font-size:16px;line-height:30px !important;">Home</a>
         | <a href="{% url 'about' %}" style="font-size:16px;line-height:30px;">About</a>
         | <a href="{% url 'pastEvents' %}" style="font-size:16px;line-height:30px;">Events</a>
@@ -52,7 +52,7 @@
             <div class="tg-copyrights">
               <p style="margin-bottom:0px;color:#fff">
                 <font style="vertical-align: inherit;">
-                  <font style="vertical-align: inherit;">© 2020 All Rights Reserved. </font>
+                  <font style="vertical-align: inherit;" id="mgsosacopyright"> </font>
                 </font>
               </p>
             </div>
@@ -78,6 +78,11 @@
       openEffect: "none",
       closeEffect: "none"
     });
+    var currentYear = new Date().getFullYear();
+    console.log(".....current year........."+currentYear);
+    document.getElementById('mgsosacopyright').innerHTML="© "+currentYear+" All Rights Reserved.";
+    document.getElementById('mgsosaid').innerHTML="© "+currentYear+"&nbsp;Mor Gregorios Syriac Orthodox Student Association.";
+
   });
 </script>
 
