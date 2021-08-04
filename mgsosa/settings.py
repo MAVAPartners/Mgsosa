@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '+cdmd0fk($yd$e(c&ic(o7!e65fe^6lqza)co4x51$k^#+m72!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -104,15 +104,15 @@ WSGI_APPLICATION = 'mgsosa.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 '''
+
 # Google Cloud Mysql server connection details
 DATABASES = {
     'default': {
@@ -126,7 +126,7 @@ DATABASES = {
     }
 }
 
-'''
+
 # Local Postgre sql server connection details
 '''
 DATABASES = {
@@ -134,7 +134,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'mbc_mgsosa',
         'USER': 'mbcdb',
-        'PASSWORD': 'test@1234',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '5432'
     }

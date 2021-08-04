@@ -1,6 +1,6 @@
 from .base import *
 
-ALLOWED_HOSTS = [ '34.66.85.93' ] # customize with your domain name
+ALLOWED_HOSTS = [ '34.145.50.2' ] # customize with your domain name
 
 DATABASES = {
     'default': {
