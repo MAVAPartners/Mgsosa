@@ -522,8 +522,9 @@
                   <div style="width:100%" id="loadingDiv">
                     <div class="loader"></div>
                   </div>
-                  <div class="col-sm-12 lead" id="prayer" style="color:#898a96;line-height:30px">
-                  </div><br />
+                  
+                  <iframe id="prayeriframe"  scrolling="no" height="400" width="100%" frameBorder="0"  title="Iframe Example"></iframe>
+                  <br />
 
                   <h5 class="black-color">Powered by <a href="{% url 'qleedo' %}">Qleedo</a></h5>
                   <div style="width:100%;float:right">
@@ -717,7 +718,7 @@
       var prayer_title = document.getElementById('prayer_name');
       var prayerUrl = document.getElementById("prayerDetails")
       loading.style.display = "block";
-      prayer_details.style.display = "none";
+      //prayer_details.style.display = "none";
 
       let today = new Date();
       let dd = today.getDate();
@@ -749,8 +750,9 @@
           prayerurl = resultPrayer.result[0]['Prayer']['url'];
           prayer_title.innerHTML = prayer;
           prayerUrl.innerHTML = prayerurl;
-
-          fetch(prayerurl)
+          document.getElementById('prayeriframe').src=prayerurl;
+          loading.style.display = "none";
+          /*fetch(prayerurl)
             .then(function (response) {
               switch (response.status) {
                 // status "OK"
@@ -767,11 +769,12 @@
               prayer_details.innerHTML += removeTags(newstring).substring(0, 955);
               loading.style.display = "none";
               prayer_details.style.display = "block";
+              console.log(prayerurl,"...prayerurlprayerurl data......",updatedTemplate);
             })
             .catch(function (response) {
               // "Not Found"
               console.log(response.statusText);
-            });
+            });*/
 
 
         })
