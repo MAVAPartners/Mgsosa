@@ -750,9 +750,9 @@
           prayerurl = resultPrayer.result[0]['Prayer']['url'];
           prayer_title.innerHTML = prayer;
           prayerUrl.innerHTML = prayerurl;
-          document.getElementById('prayeriframe').src=prayerurl;
-          loading.style.display = "none";
-          /*fetch(prayerurl)
+          //document.getElementById('prayeriframe').src=prayerurl;
+          //loading.style.display = "none";
+          fetch(prayerurl)
             .then(function (response) {
               switch (response.status) {
                 // status "OK"
@@ -766,15 +766,17 @@
             .then(function (template) {
               var updatedTemplate = template.replace('img_prayer_footnote.png', '/static/images/img_prayer_footnote.png');
               var newstring = updatedTemplate.replace('prayer_end.png', '/static/images/prayer_end.png');
-              prayer_details.innerHTML += removeTags(newstring).substring(0, 955);
+              //prayer_details.innerHTML += removeTags(newstring).substring(0, 955);
               loading.style.display = "none";
-              prayer_details.style.display = "block";
-              console.log(prayerurl,"...prayerurlprayerurl data......",updatedTemplate);
+              var doc = document.getElementById('prayeriframe').contentWindow.document;
+              doc.open();
+              doc.write(newstring);
+              doc.close();
             })
             .catch(function (response) {
               // "Not Found"
               console.log(response.statusText);
-            });*/
+            });
 
 
         })
